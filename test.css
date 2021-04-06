@@ -1,0 +1,31 @@
+body,
+html {
+	height: 100%;
+	margin: 0;
+}
+
+#bg-gate {
+	position: absolute;
+	height: auto;
+	width: 6000px;
+	max-width: 100%;
+	z-index: -1;
+}
+
+#gate-mask {
+	position: absolute;
+	opacity: 0;
+	height: auto;
+	width: 6000px;
+	max-width: 100%;
+	z-index: 0;
+}
+
+#gate {
+	opacity: 0;
+	position: absolute;
+	height: auto;
+	width: 6000px;
+	max-width: 100%;
+	z-index: -1;
+}

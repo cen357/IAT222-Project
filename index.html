@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="test.css" />
+	</head>
+	<body>
+		<h1>Test</h1>
+		<div id="wrapper">
+			<img id="bg-gate" src="gate-north.JPG" alt="bg-gate" />
+			<img
+				id="gate-mask"
+				usemap="#gate_map"
+				src="gate-north.JPG"
+				alt="bg-gate"
+			/>
+			<img id="gate" src="gate.png" alt="gate" />
+		</div>
+
+		<map name="gate_map">
+			<area
+				id="sign"
+				shape="rect"
+				coords="628,303,769,370"
+				alt="gate"
+				title="gate"
+				href="#"
+			/>
+		</map>
+
+		<script src="script.js"></script>
+	</body>
+</html>
