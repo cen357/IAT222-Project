@@ -69,7 +69,8 @@ function GateFront(props) {
 
 	// Redirect handlers
 	const handleLeft = () => props.history.push("/streetView/gateLeft");
-	const handleForward = () => props.history.push("/");
+	const handleForward = () =>
+		props.history.push("/streetView/insuranceFront");
 	const handleRight = () => props.history.push("/streetView/gateRight");
 	const handleSouth = () => props.history.push("/streetView/gateSouth");
 
