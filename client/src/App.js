@@ -10,6 +10,10 @@ import Home from "./views/pages/Home";
 import About from "./views/pages/About";
 import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
+import GateFront from "./views/app/Default/Gate/GateFront";
+import GateLeft from "./views/app/Default/Gate/GateLeft";
+import GateRight from "./views/app/Default/Gate/GateRight";
+import GateSouth from "./views/app/Default/Gate/GateSouth";
 import Logo from "./assets/logos/placeholder.com-logo1.jpg";
 
 class App extends React.Component {
@@ -102,6 +106,10 @@ function Main() {
 			<Route exact path="/about" component={About} />
 			<Route exact path="/contact" component={Contact} />
 			<Route exact path="/streetView" component={StreetView} />
+			<Route exact path="/streetView/gateFront" component={GateFront} />
+			<Route exact path="/streetView/gateLeft" component={GateLeft} />
+			<Route exact path="/streetView/gateRight" component={GateRight} />
+			<Route exact path="/streetView/gateSouth" component={GateSouth} />
 		</Switch>
 	);
 }

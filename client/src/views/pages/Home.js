@@ -2,9 +2,7 @@ import React from "react";
 import Cat from "../../assets/pages/cat.jpg";
 
 function Home(props) {
-	function handleStart() {
-		props.history.push("/streetView");
-	}
+	const handleStart = () => props.history.push("/streetView");
 
 	return (
 		<div className="container">
