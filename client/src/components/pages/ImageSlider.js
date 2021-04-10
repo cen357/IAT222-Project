@@ -1,5 +1,5 @@
 import React from "react";
-import Cat from "../../assets/pages/cat.jpg";
+import Cat from "../../assets/img/cat.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

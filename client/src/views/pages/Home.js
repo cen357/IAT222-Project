@@ -1,10 +1,8 @@
 import React from "react";
-import Cat from "../../assets/pages/cat.jpg";
+import Cat from "../../assets/img/cat.jpg";
 
 function Home(props) {
-	function handleStart() {
-		props.history.push("/streetView");
-	}
+	const handleStart = () => props.history.push("/streetView");
 
 	return (
 		<div className="container">

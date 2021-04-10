@@ -1,7 +1,7 @@
 import React from "react";
 import "react-multi-carousel/lib/styles.css";
 import ImageSlider from "../../components/pages/ImageSlider";
-import Cat from "../../assets/pages/cat.jpg";
+import Cat from "../../assets/img/cat.jpg";
 
 function About() {
 	return (
