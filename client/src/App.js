@@ -10,7 +10,8 @@ import Home from "./views/pages/Home";
 import About from "./views/pages/About";
 import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
-import Logo from "./assets/logos/placeholder.com-logo1.jpg";
+import FrontNormalBlue from "./views/app/locations/blue/normal/FrontNormalBlue";
+import Logo from "./assets/logo/placeholder.com-logo1.jpg";
 
 class App extends React.Component {
 	render() {
@@ -102,6 +103,11 @@ function Main() {
 			<Route exact path="/about" component={About} />
 			<Route exact path="/contact" component={Contact} />
 			<Route exact path="/streetView" component={StreetView} />
+			<Route
+				exact
+				path="/streetView/locations/blue/normal/front"
+				component={FrontNormalBlue}
+			/>
 		</Switch>
 	);
 }
