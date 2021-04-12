@@ -1,21 +1,44 @@
+import { motion } from "framer-motion";
 import React from "react";
 
 function streetView(props) {
+	const pageVariants = {
+		in: {
+			opacity: 1,
+		},
+		out: {
+			opacity: 0,
+		},
+	};
+
+	const pageTransition = {
+		type: "tween",
+		ease: "linear",
+		duration: 0.5,
+	};
+
 	const handleStart = () =>
-		props.history.push("/streetView/locations/blue/normal");
+		props.history.push("/streetView/locations/blue/normal/front");
 
 	return (
-		<div className="container">
-			<div className="d-flex flex-column">
-				<div>Content</div>
+		<motion.div
+			initial="out"
+			animate="in"
+			exit="in"
+			variants={pageVariants}
+			transition={pageTransition}>
+			<div className="container">
+				<div className="d-flex flex-column">
+					<div>Content</div>
+				</div>
+				<button
+					type="button"
+					onClick={handleStart}
+					className="btn btn-secondary">
+					Start
+				</button>
 			</div>
-			<button
-				type="button"
-				onClick={handleStart}
-				className="btn btn-secondary">
-				Start
-			</button>
-		</div>
+		</motion.div>
 	);
 }
 

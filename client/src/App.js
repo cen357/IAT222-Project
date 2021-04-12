@@ -1,9 +1,11 @@
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import {
 	BrowserRouter as Router,
 	Route,
 	NavLink,
 	Switch,
+	useLocation,
 } from "react-router-dom";
 import "./App.css";
 import Home from "./views/pages/Home";
@@ -11,24 +13,23 @@ import About from "./views/pages/About";
 import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
 import FrontNormalBlue from "./views/app/locations/blue/normal/FrontNormalBlue";
-import Logo from "./assets/logo/placeholder.com-logo1.jpg";
+import FrontNormalGreen from "./views/app/locations/green/normal/FrontNormalGreen";
+import Logo from "./assets/logo/logo.png";
 
-class App extends React.Component {
-	render() {
-		return (
-			<div className="App">
-				<Router>
-					<div>
-						<Navigation />
-						<div className="container">
-							<Main />
-						</div>
-						<Footer />
+function App() {
+	return (
+		<div className="App">
+			<Router>
+				<div>
+					<Navigation />
+					<div className="container">
+						<Main />
 					</div>
-				</Router>
-			</div>
-		);
-	}
+					<Footer />
+				</div>
+			</Router>
+		</div>
+	);
 }
 
 function Footer() {
@@ -56,8 +57,8 @@ function Navigation() {
 							className="d-inline-block align-top"
 							src={Logo}
 							alt="logo"
-							width="100"
-							height="30"
+							width="50"
+							height="40"
 						/>
 						Cow Gang
 					</NavLink>
@@ -97,18 +98,27 @@ function Navigation() {
 }
 
 function Main() {
+	const location = useLocation();
+
 	return (
-		<Switch>
-			<Route exact path="/" component={Home} />
-			<Route exact path="/about" component={About} />
-			<Route exact path="/contact" component={Contact} />
-			<Route exact path="/streetView" component={StreetView} />
-			<Route
-				exact
-				path="/streetView/locations/blue/normal/front"
-				component={FrontNormalBlue}
-			/>
-		</Switch>
+		<AnimatePresence exitBeforeEnter>
+			<Switch location={location} key={location.pathname}>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/about" component={About} />
+				<Route exact path="/contact" component={Contact} />
+				<Route exact path="/streetView" component={StreetView} />
+				<Route
+					exact
+					path="/streetView/locations/blue/normal/front"
+					component={FrontNormalBlue}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/green/normal/front"
+					component={FrontNormalGreen}
+				/>
+			</Switch>
+		</AnimatePresence>
 	);
 }
 
