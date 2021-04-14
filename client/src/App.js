@@ -14,6 +14,9 @@ import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
 import FrontNormalBlue from "./views/app/locations/blue/normal/FrontNormalBlue";
 import FrontNormalGreen from "./views/app/locations/green/normal/FrontNormalGreen";
+import RightNormalGreen from "./views/app/locations/green/normal/RightNormalGreen";
+import BackNormalGreen from "./views/app/locations/green/normal/BackNormalGreen";
+import LeftNormalGreen from "./views/app/locations/green/normal/LeftNormalGreen";
 import Logo from "./assets/logo/logo.png";
 
 function App() {
@@ -118,6 +121,21 @@ function Main() {
 					exact
 					path="/streetView/locations/green/normal/front"
 					component={FrontNormalGreen}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/green/normal/right"
+					component={RightNormalGreen}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/green/normal/back"
+					component={BackNormalGreen}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/green/normal/left"
+					component={LeftNormalGreen}
 				/>
 			</Switch>
 		</AnimatePresence>

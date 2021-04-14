@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import useSound from "use-sound";
-import ProgressiveImage from "react-progressive-image-loading";
 import NavigationUIForwardOnly from "../../../../../assets/app/navigationUI_forward_only.png";
 import FrontNormalBackground from "../../../../../assets/app/blue/normal/front/front_normal_background.png";
 import BlueToGreenTransition from "../../../../../assets/app/blue/normal/front/blue_to_green_transition.mp4";
@@ -9,12 +8,16 @@ import CatSound from "../../../../../assets/app/blue/normal/front/cat.mp3";
 import { motion } from "framer-motion";
 
 function FrontNormalBlue(props) {
-	// State declaration
-	const [viewActive, setViewActive] = useState(1);
+	//******************************************************************************//
+	// Hooks
+	//******************************************************************************//
+	const [backgroundActive, setBackgroundActive] = useState(0);
 	const transitionEffectRef = useRef(null);
 	const [play, { stop }] = useSound(CatSound);
 
-	// Animation variables declaration
+	//******************************************************************************//
+	// Page animation configuration
+	//******************************************************************************//
 	const pageVariants = {
 		in: {
 			opacity: 1,
@@ -27,10 +30,12 @@ function FrontNormalBlue(props) {
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
-		duration: 1,
+		duration: 0.2,
 	};
 
-	// Image map areas
+	//******************************************************************************//
+	// Image map area configuration
+	//******************************************************************************//
 	const SHOP_FRONT = {
 		name: "shop_front",
 		areas: [
@@ -45,8 +50,15 @@ function FrontNormalBlue(props) {
 		],
 	};
 
-	//Event handlers
-	const handleLoad = () => console.log("loaded");
+	//******************************************************************************//
+	// Event handlers
+	//******************************************************************************//
+	const handleLoad = () => {
+		setTimeout(() => {
+			setBackgroundActive(1);
+		}, 500);
+		console.log("loaded");
+	};
 
 	const handleAreaClick = (area) => {
 		alert(
@@ -84,23 +96,33 @@ function FrontNormalBlue(props) {
 		stop();
 	};
 
-	// Redirect handlers
+	//******************************************************************************//
+	// Routing handlers
+	//******************************************************************************//
 	const handleForward = () => {
-		setViewActive(0);
+		// turn background off
+		setBackgroundActive(0);
+		// Play transition video
 		transitionEffectRef.current.play();
+		// Redirect
 		setTimeout(() => {
 			props.history.push("/streetView/locations/green/normal/front");
-		}, 1000);
+		}, 2000);
 	};
+
+	//******************************************************************************//
+	// RETURN
+	//******************************************************************************//
 
 	return (
 		<motion.div
 			initial="out"
 			animate="in"
-			exit="in"
+			exit="out"
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
+				{/* Transition video */}
 				<video
 					id="transitionEffect"
 					width="1024"
@@ -111,31 +133,32 @@ function FrontNormalBlue(props) {
 						src={BlueToGreenTransition}
 						type="video/mp4"></source>
 				</video>
-				<div
+
+				{/* Background image*/}
+				<img
 					id="background"
+					src={FrontNormalBackground}
 					alt="background"
 					width="1024"
 					height="768"
 					style={{
 						position: "absolute",
 						zIndex: 1,
-						opacity: viewActive,
-					}}>
-					<ProgressiveImage
-						preview={FrontNormalBackground}
-						src={FrontNormalBackground}
-						render={(src, style) => (
-							<img src={src} style={style} alt="background" />
-						)}
-					/>
-				</div>
+						opacity: backgroundActive,
+					}}
+				/>
 
+				{/* Animations */}
+
+				{/* QR codes */}
+
+				{/* User Interface */}
 				<div
-					id="mask"
+					id="UI-mask"
 					style={{
 						position: "absolute",
 						zIndex: 2,
-						opacity: viewActive,
+						opacity: backgroundActive,
 					}}>
 					<ImageMapper
 						src={NavigationUIForwardOnly}

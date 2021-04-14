@@ -1,22 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUI from "../../../../../assets/app/navigationUI.png";
-import useSound from "use-sound";
-import ProgressiveImage from "react-progressive-image-loading";
+import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
 import FrontNormalBackground from "../../../../../assets/app/green/normal/front/front_normal_background.png";
-import FrontNormalBackgroundPreview from "../../../../../assets/app/green/normal/front/front_normal_background_preview.png";
 import { motion } from "framer-motion";
-import BlueToGreenTransition from "../../../../../assets/app/blue/normal/front/blue_to_green_transition.mp4";
 import GifPlayer from "react-gif-player";
 import ViolentPopup1 from "../../../../../assets/app/green/normal/front/violent-popup-1.gif";
 
 function FrontNormalGreen(props) {
-	// State declaration
-	const [viewActive, setViewActive] = useState(0);
+	//******************************************************************************//
+	// Hooks
+	//******************************************************************************//
+	const [backgroundActive, setBackgroundActive] = useState(0);
 	const [toggleAnimation, setToggleAnimation] = useState(0);
-	const transitionEffectRef = useRef(null);
 
-	// Animation variables declaration
+	//******************************************************************************//
+	// Page animation configuration
+	//******************************************************************************//
 	const pageVariants = {
 		in: {
 			opacity: 1,
@@ -28,21 +27,15 @@ function FrontNormalGreen(props) {
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
-		duration: 1,
+		duration: 0.2,
 	};
 
-	// Image map areas
-	const MALL = {
-		name: "mall",
+	//******************************************************************************//
+	// Image map area configuration
+	//******************************************************************************//
+	const UI = {
+		name: "ui",
 		areas: [
-			{
-				name: "move_forward",
-				shape: "poly",
-				coords: [478, 733, 510, 711, 544, 734],
-				lineWidth: 1,
-				preFillColor: "red",
-				strokeColor: "#6afd09",
-			},
 			{
 				name: "move_left",
 				shape: "poly",
@@ -62,10 +55,12 @@ function FrontNormalGreen(props) {
 		],
 	};
 
-	//Event handlers
+	//******************************************************************************//
+	// Event handlers
+	//******************************************************************************//
 	const handleLoad = () => {
 		setTimeout(() => {
-			setViewActive(1);
+			setBackgroundActive(1);
 		}, 500);
 
 		console.log("loaded");
@@ -80,9 +75,6 @@ function FrontNormalGreen(props) {
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			// Navigation UI
-			case "move_forward":
-				handleForward();
-				break;
 			case "move_left":
 				handleLeft();
 				break;
@@ -115,11 +107,22 @@ function FrontNormalGreen(props) {
 		console.log("leaved area");
 	};
 
-	// Redirect handlers
-	const handleLeft = () => props.history.push("/streetView");
-	const handleForward = () => props.history.push("/streetView");
-	const handleRight = () => props.history.push("/streetView");
+	//******************************************************************************//
+	// Routing handlers
+	//******************************************************************************//
+	const handleLeft = () => {
+		setBackgroundActive(0);
+		props.history.push("/streetView/locations/green/normal/left");
+	};
 
+	const handleRight = () => {
+		setBackgroundActive(0);
+		props.history.push("/streetView/locations/green/normal/right");
+	};
+
+	//******************************************************************************//
+	// RETURN
+	//******************************************************************************//
 	return (
 		<motion.div
 			initial="in"
@@ -128,36 +131,23 @@ function FrontNormalGreen(props) {
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
-				<video
-					id="transitionEffect"
-					width="1024"
-					height="768"
-					style={{ position: "absolute", zIndex: 0 }}
-					ref={transitionEffectRef}>
-					<source
-						src={BlueToGreenTransition}
-						type="video/mp4"></source>
-				</video>
-				<div
+				{/* Transition video */}
+
+				{/* Background image*/}
+				<img
 					id="background"
+					src={FrontNormalBackground}
+					alt="background"
 					width="1024"
 					height="768"
 					style={{
 						position: "absolute",
 						zIndex: 1,
-						opacity: 1,
-					}}>
-					<ProgressiveImage
-						preview={FrontNormalBackgroundPreview}
-						src={FrontNormalBackground}
-						transitionTime={500}
-						transitionFunction="ease"
-						render={(src, style) => (
-							<img src={src} style={style} alt="background" />
-						)}
-					/>
-				</div>
+						opacity: backgroundActive,
+					}}
+				/>
 
+				{/* Animations */}
 				<div
 					id="animation"
 					width="1024"
@@ -170,16 +160,19 @@ function FrontNormalGreen(props) {
 					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
 				</div>
 
+				{/* Qr Codes */}
+
+				{/* User Interface */}
 				<div
 					id="mask"
 					style={{
 						position: "absolute",
 						zIndex: 3,
-						opacity: viewActive,
+						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUI}
-						map={MALL}
+						src={NavigationUISideOnly}
+						map={UI}
 						width={1024}
 						height={768}
 						onLoad={handleLoad}
