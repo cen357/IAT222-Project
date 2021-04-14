@@ -116,19 +116,19 @@ function RightNormalOrange(props) {
 	//******************************************************************************//
 	const handleLeft = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/normal/left");
+		props.history.push("/streetView/locations/orange/normal/front");
 	};
 
 	const handleForward = () => {
 		setBackgroundActive(0);
 		setTimeout(() => {
-			props.history.push("/streetView/locations/green/normal/front");
+			props.history.push("/streetView/locations/red/normal/right");
 		}, 2000);
 	};
 
 	const handleRight = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/normal/right");
+		props.history.push("/streetView/locations/orange/normal/back");
 	};
 
 	//******************************************************************************//
