@@ -25,8 +25,6 @@ function FrontNormalGreen(props) {
 			opacity: 0,
 		},
 	};
-	f;
-
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
