@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
+import NavigationUI from "../../../../../assets/app/navigationUI.png";
 import RightNormalBackground from "../../../../../assets/app/green/normal/right/right_normal_background.png";
 import { motion } from "framer-motion";
 
@@ -33,6 +33,14 @@ function RightNormalGreen(props) {
 	const UI = {
 		name: "ui",
 		areas: [
+			{
+				name: "move_forward",
+				shape: "poly",
+				coords: [478, 733, 510, 711, 544, 734],
+				lineWidth: 1,
+				preFillColor: "red",
+				strokeColor: "#6afd09",
+			},
 			{
 				name: "move_left",
 				shape: "poly",
@@ -72,6 +80,9 @@ function RightNormalGreen(props) {
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			// Navigation UI
+			case "move_forward":
+				handleForward();
+				break;
 			case "move_left":
 				handleLeft();
 				break;
@@ -106,6 +117,13 @@ function RightNormalGreen(props) {
 	const handleLeft = () => {
 		setBackgroundActive(0);
 		props.history.push("/streetView/locations/green/normal/front");
+	};
+
+	const handleForward = () => {
+		setBackgroundActive(0);
+		setTimeout(() => {
+			props.history.push("/streetView/locations/blue/normal/front");
+		}, 2000);
 	};
 
 	const handleRight = () => {
@@ -153,7 +171,7 @@ function RightNormalGreen(props) {
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUISideOnly}
+						src={NavigationUI}
 						map={UI}
 						width={1024}
 						height={768}

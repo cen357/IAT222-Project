@@ -7,17 +7,43 @@ import {
 	Switch,
 	useLocation,
 } from "react-router-dom";
-import "./App.css";
+
+// Landing pages
 import Home from "./views/pages/Home";
 import About from "./views/pages/About";
 import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
+
+// location Blue
 import FrontNormalBlue from "./views/app/locations/blue/normal/FrontNormalBlue";
+
+//Location Green
 import FrontNormalGreen from "./views/app/locations/green/normal/FrontNormalGreen";
 import RightNormalGreen from "./views/app/locations/green/normal/RightNormalGreen";
 import BackNormalGreen from "./views/app/locations/green/normal/BackNormalGreen";
 import LeftNormalGreen from "./views/app/locations/green/normal/LeftNormalGreen";
+
+//Location Red
+import FrontNormalRed from "./views/app/locations/green/normal/FrontNormalRed";
+import RightNormalRed from "./views/app/locations/green/normal/RightNormalRed";
+import BackNormalRed from "./views/app/locations/green/normal/BackNormalRed";
+import LeftNormalRed from "./views/app/locations/green/normal/LeftNormalRed";
+
+//Location Orange
+import FrontNormalOrange from "./views/app/locations/green/normal/FrontNormalOrange";
+import RightNormalOrange from "./views/app/locations/green/normal/RightNormalOrange";
+import BackNormalOrange from "./views/app/locations/green/normal/BackNormalOrange";
+import LeftNormalOrange from "./views/app/locations/green/normal/LeftNormalOrange";
+
+//Location Purple
+import FrontNormalPurple from "./views/app/locations/green/normal/FrontNormalPurple";
+import RightNormalPurple from "./views/app/locations/green/normal/RightNormalPurple";
+import BackNormalPurple from "./views/app/locations/green/normal/BackNormalPurple";
+import LeftNormalPurple from "./views/app/locations/green/normal/LeftNormalPurple";
+
+// CSS and assets
 import Logo from "./assets/logo/logo.png";
+import "./App.css";
 
 function App() {
 	return (
@@ -108,15 +134,20 @@ function Main() {
 	return (
 		<AnimatePresence exitBeforeEnter>
 			<Switch location={location} key={location.pathname}>
+				{/* Landing pages */}
 				<Route exact path="/" component={Home} />
 				<Route exact path="/about" component={About} />
 				<Route exact path="/contact" component={Contact} />
 				<Route exact path="/streetView" component={StreetView} />
+
+				{/* Location Blue */}
 				<Route
 					exact
 					path="/streetView/locations/blue/normal/front"
 					component={FrontNormalBlue}
 				/>
+
+				{/* Location Green */}
 				<Route
 					exact
 					path="/streetView/locations/green/normal/front"
@@ -136,6 +167,72 @@ function Main() {
 					exact
 					path="/streetView/locations/green/normal/left"
 					component={LeftNormalGreen}
+				/>
+
+				{/* Location Red */}
+				<Route
+					exact
+					path="/streetView/locations/red/normal/front"
+					component={FrontNormalRed}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/red/normal/right"
+					component={RightNormalRed}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/red/normal/back"
+					component={BackNormalRed}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/red/normal/left"
+					component={LeftNormalRed}
+				/>
+
+				{/* Location Orange */}
+				<Route
+					exact
+					path="/streetView/locations/orange/normal/front"
+					component={FrontNormalOrange}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/orange/normal/right"
+					component={RightNormalOrange}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/orange/normal/back"
+					component={BackNormalOrange}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/orange/normal/left"
+					component={LeftNormalOrange}
+				/>
+
+				{/* Location Purple */}
+				<Route
+					exact
+					path="/streetView/locations/purple/normal/front"
+					component={FrontNormalPurple}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/purple/normal/right"
+					component={RightNormalPurple}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/purple/normal/back"
+					component={BackNormalPurple}
+				/>
+				<Route
+					exact
+					path="/streetView/locations/purple/normal/left"
+					component={LeftNormalPurple}
 				/>
 			</Switch>
 		</AnimatePresence>
