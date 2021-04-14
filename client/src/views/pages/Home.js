@@ -1,6 +1,7 @@
 import React from "react";
-import HomePageIllustration from "../../assets/img/HomePageIllustration.png";
-import { animate, motion } from "framer-motion";
+import HomeIllustration from "../../assets/img/HomePageIllustration.png";
+import { motion } from "framer-motion";
+import HomeBackground from "../../assets/img/home.png";
 
 function Home(props) {
 	const pageVariants = {
@@ -15,7 +16,7 @@ function Home(props) {
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
-		duration: 0.5,
+		duration: 0.3,
 	};
 
 	const handleStart = () => props.history.push("/streetView");
@@ -28,10 +29,23 @@ function Home(props) {
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
-				<div className="d-flex flex-row mt-5">
+				<img
+					src={HomeBackground}
+					alt="background"
+					style={{
+						height: "100%",
+						width: "100%",
+						size: "cover",
+						position: "fixed",
+						top: 0,
+						left: 0,
+						zIndex: -1,
+					}}
+				/>
+				<div className="d-flex flex-row mt-5 pb-5">
 					<div className="p-5">
 						<img
-							src={HomePageIllustration}
+							src={HomeIllustration}
 							alt="home"
 							height="300"
 							width="400"
@@ -50,7 +64,7 @@ function Home(props) {
 							<button
 								type="button"
 								onClick={handleStart}
-								className="btn btn-secondary">
+								className="btn btn-secondary rounded-pill font-weight-bold py-2 px-4 text-white	bg-primary">
 								Click to Start
 							</button>
 						</div>

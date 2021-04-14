@@ -34,7 +34,7 @@ function App() {
 
 function Footer() {
 	return (
-		<footer className="bg-dark text-center text-white mt-5 p-2">
+		<footer id="footer">
 			<strong>Copyright @ Cow Gang</strong>
 			<div>IAT222: Interactive Arts</div>
 			<div>Instructor: Mahsoo Salimi</div>
@@ -45,9 +45,9 @@ function Footer() {
 
 function Navigation() {
 	return (
-		<nav className="navbar navbar-expand-lg navbar justify-content-between mt-4 mb-5 h5">
+		<nav className="navbar navbar-expand-lg justify-content-between mt-4 mb-5 h5">
 			<div className="container">
-				<div className="navbar-brand">
+				<div className="p-0">
 					<NavLink
 						exact
 						className="nav-link"
@@ -57,10 +57,12 @@ function Navigation() {
 							className="d-inline-block align-top"
 							src={Logo}
 							alt="logo"
-							width="50"
-							height="40"
+							width="80"
+							height="65"
 						/>
-						Cow Gang
+						<span id="nav-logo" className="pl-2">
+							COW GANG
+						</span>
 					</NavLink>
 				</div>
 				<ul className="navbar-nav">
@@ -70,7 +72,7 @@ function Navigation() {
 							className="nav-link"
 							activeClassName="active"
 							to="/">
-							Home
+							<span id="nav-item">Home</span>
 						</NavLink>
 					</li>
 					<li className="nav-item pl-5">
@@ -79,7 +81,7 @@ function Navigation() {
 							className="nav-link"
 							activeClassName="active"
 							to="/about">
-							About
+							<span id="nav-item">About</span>
 						</NavLink>
 					</li>
 					<li className="nav-item pl-5">
@@ -88,7 +90,7 @@ function Navigation() {
 							className="nav-link"
 							activeClassName="active"
 							to="/contact">
-							Contact
+							<span id="nav-item">Contact</span>
 						</NavLink>
 					</li>
 				</ul>

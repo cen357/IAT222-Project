@@ -1,0 +1,30 @@
+#nav-item {
+	font-weight: bold;
+	color: black;
+	opacity: 0.6;
+}
+
+#nav-logo {
+	color: black;
+	font-weight: bold;
+}
+
+#nav-item:hover {
+	opacity: 1;
+	color: black;
+}
+#nav-item:active {
+	opacity: 1;
+	color: black;
+}
+
+#footer {
+	margin-top: 100px;
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: lightcoral;
+	color: black;
+	text-align: center;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import "react-multi-carousel/lib/styles.css";
 import ImageSlider from "../../components/pages/ImageSlider";
 import Cat from "../../assets/img/cat.jpg";
+import AboutBackground from "../../assets/img/about.png";
 import { motion } from "framer-motion";
 
 function About() {
@@ -17,7 +18,7 @@ function About() {
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
-		duration: 0.5,
+		duration: 0.3,
 	};
 
 	return (
@@ -28,6 +29,19 @@ function About() {
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
+				<img
+					src={AboutBackground}
+					alt="background"
+					style={{
+						height: "100%",
+						width: "100%",
+						size: "cover",
+						position: "fixed",
+						top: 0,
+						left: 0,
+						zIndex: -1,
+					}}
+				/>
 				<div className="d-flex justify-content-between pt-5">
 					<div className="px-5 ml-5">
 						<h1>Our goal</h1>
