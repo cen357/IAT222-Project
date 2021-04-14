@@ -7,10 +7,13 @@ import FrontNormalBackground from "../../../../../assets/app/green/normal/front/
 import FrontNormalBackgroundPreview from "../../../../../assets/app/green/normal/front/front_normal_background_preview.png";
 import { motion } from "framer-motion";
 import BlueToGreenTransition from "../../../../../assets/app/blue/normal/front/blue_to_green_transition.mp4";
+import GifPlayer from "react-gif-player";
+import ViolentPopup1 from "../../../../../assets/app/green/normal/front/violent-popup-1.gif";
 
 function FrontNormalGreen(props) {
 	// State declaration
 	const [viewActive, setViewActive] = useState(0);
+	const [toggleAnimation, setToggleAnimation] = useState(0);
 	const transitionEffectRef = useRef(null);
 
 	// Animation variables declaration
@@ -22,6 +25,7 @@ function FrontNormalGreen(props) {
 			opacity: 0,
 		},
 	};
+	f;
 
 	const pageTransition = {
 		type: "tween",
@@ -99,6 +103,10 @@ function FrontNormalGreen(props) {
 		};
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
+		setToggleAnimation(1);
+		setTimeout(() => {
+			setToggleAnimation(0);
+		}, 6500);
 	};
 
 	const handleMouseEnterArea = (area) => {
@@ -134,7 +142,6 @@ function FrontNormalGreen(props) {
 				</video>
 				<div
 					id="background"
-					alt="background"
 					width="1024"
 					height="768"
 					style={{
@@ -154,10 +161,22 @@ function FrontNormalGreen(props) {
 				</div>
 
 				<div
+					id="animation"
+					width="1024"
+					height="768"
+					style={{
+						position: "absolute",
+						zIndex: 2,
+						opacity: toggleAnimation,
+					}}>
+					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
+				</div>
+
+				<div
 					id="mask"
 					style={{
 						position: "absolute",
-						zIndex: 1,
+						zIndex: 3,
 						opacity: viewActive,
 					}}>
 					<ImageMapper
