@@ -12,8 +12,17 @@ function FrontNormalBlue(props) {
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
+	const [animationCount, setAnimationCount] = useState(
+		props.location.state.animationCount
+	);
 	const transitionEffectRef = useRef(null);
 	const [play, { stop }] = useSound(CatSound);
+
+	useEffect(() => {
+		if (animationCount >= 3) {
+			alert("yeah");
+		}
+	}, [animationCount]);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -82,6 +91,7 @@ function FrontNormalBlue(props) {
 			x: event.nativeEvent.layerX,
 			y: event.nativeEvent.layerY,
 		};
+		setAnimationCount(animationCount + 1);
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
 	};
@@ -106,7 +116,12 @@ function FrontNormalBlue(props) {
 		transitionEffectRef.current.play();
 		// Redirect
 		setTimeout(() => {
-			props.history.push("/streetView/locations/green/normal/front");
+			props.history.push({
+				pathname: "/streetView/locations/green/normal/front",
+				state: {
+					animationCount,
+				},
+			});
 		}, 2000);
 	};
 
@@ -174,6 +189,9 @@ function FrontNormalBlue(props) {
 						strokeColor={"white"}
 					/>
 				</div>
+			</div>
+			<div style={{ paddingTop: "800px" }}>
+				animationCount = {animationCount}
 			</div>
 		</motion.div>
 	);

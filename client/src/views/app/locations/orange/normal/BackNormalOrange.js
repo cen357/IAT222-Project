@@ -3,15 +3,12 @@ import ImageMapper from "react-image-mapper";
 import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
 import BackNormalBackground from "../../../../../assets/app/orange/normal/back/back_normal_background.png";
 import { motion } from "framer-motion";
-import GifPlayer from "react-gif-player";
-import ViolentPopup1 from "../../../../../assets/app/green/normal/front/violent-popup-1.gif";
 
 function BackNormalOrange(props) {
 	//******************************************************************************//
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
-	const [toggleAnimation, setToggleAnimation] = useState(0);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -93,10 +90,6 @@ function BackNormalOrange(props) {
 		};
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
-		setToggleAnimation(1);
-		setTimeout(() => {
-			setToggleAnimation(0);
-		}, 6500);
 	};
 
 	const handleMouseEnterArea = (area) => {
@@ -148,17 +141,6 @@ function BackNormalOrange(props) {
 				/>
 
 				{/* Animations */}
-				<div
-					id="animation"
-					width="1024"
-					height="768"
-					style={{
-						position: "absolute",
-						zIndex: 2,
-						opacity: toggleAnimation,
-					}}>
-					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
-				</div>
 
 				{/* Qr Codes */}
 

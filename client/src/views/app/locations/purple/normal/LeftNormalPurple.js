@@ -105,12 +105,12 @@ function LeftNormalPurple(props) {
 	//******************************************************************************//
 	const handleLeft = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/green/normal/back");
+		props.history.push("/streetView/locations/purple/normal/back");
 	};
 
 	const handleRight = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/green/normal/front");
+		props.history.push("/streetView/locations/purple/normal/front");
 	};
 
 	//******************************************************************************//

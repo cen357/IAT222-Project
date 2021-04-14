@@ -9,6 +9,9 @@ function RightNormalGreen(props) {
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
+	const [animationCount, setAnimationCount] = useState(
+		props.location.state.animationCount
+	);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -99,6 +102,7 @@ function RightNormalGreen(props) {
 			x: event.nativeEvent.layerX,
 			y: event.nativeEvent.layerY,
 		};
+		setAnimationCount(animationCount + 1);
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
 	};
@@ -122,7 +126,10 @@ function RightNormalGreen(props) {
 	const handleForward = () => {
 		setBackgroundActive(0);
 		setTimeout(() => {
-			props.history.push("/streetView/locations/blue/normal/front");
+			props.history.push({
+				pathname: "/streetView/locations/blue/normal/front",
+				state: { animationCount },
+			});
 		}, 2000);
 	};
 
@@ -184,6 +191,9 @@ function RightNormalGreen(props) {
 						strokeColor={"white"}
 					/>
 				</div>
+			</div>
+			<div style={{ paddingTop: "800px" }}>
+				animationCount = {animationCount}
 			</div>
 		</motion.div>
 	);

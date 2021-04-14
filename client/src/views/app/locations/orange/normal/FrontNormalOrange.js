@@ -116,7 +116,7 @@ function FrontNormalOrange(props) {
 	//******************************************************************************//
 	const handleLeft = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/normal/left");
+		props.history.push("/streetView/locations/orange/normal/left");
 	};
 
 	const handleForward = () => {
@@ -128,7 +128,7 @@ function FrontNormalOrange(props) {
 
 	const handleRight = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/normal/right");
+		props.history.push("/streetView/locations/orange/normal/right");
 	};
 
 	//******************************************************************************//

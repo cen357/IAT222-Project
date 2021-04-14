@@ -11,6 +11,9 @@ function FrontNormalGreen(props) {
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
+	const [animationCount, setAnimationCount] = useState(
+		props.location.state.animationCount
+	);
 	const [toggleAnimation, setToggleAnimation] = useState(0);
 
 	//******************************************************************************//
@@ -93,6 +96,9 @@ function FrontNormalGreen(props) {
 		};
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
+
+		setAnimationCount(animationCount + 1);
+
 		setToggleAnimation(1);
 		setTimeout(() => {
 			setToggleAnimation(0);
@@ -117,7 +123,10 @@ function FrontNormalGreen(props) {
 
 	const handleRight = () => {
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/green/normal/right");
+		props.history.push({
+			pathname: "/streetView/locations/green/normal/right",
+			state: { animationCount },
+		});
 	};
 
 	//******************************************************************************//
@@ -184,6 +193,9 @@ function FrontNormalGreen(props) {
 						strokeColor={"white"}
 					/>
 				</div>
+			</div>
+			<div style={{ paddingTop: "800px" }}>
+				animationCount = {animationCount}
 			</div>
 		</motion.div>
 	);

@@ -24,22 +24,22 @@ import BackNormalGreen from "./views/app/locations/green/normal/BackNormalGreen"
 import LeftNormalGreen from "./views/app/locations/green/normal/LeftNormalGreen";
 
 //Location Red
-import FrontNormalRed from "./views/app/locations/green/normal/FrontNormalRed";
-import RightNormalRed from "./views/app/locations/green/normal/RightNormalRed";
-import BackNormalRed from "./views/app/locations/green/normal/BackNormalRed";
-import LeftNormalRed from "./views/app/locations/green/normal/LeftNormalRed";
+import FrontNormalRed from "./views/app/locations/red/normal/FrontNormalRed";
+import RightNormalRed from "./views/app/locations/red/normal/RightNormalRed";
+import BackNormalRed from "./views/app/locations/red/normal/BackNormalRed";
+import LeftNormalRed from "./views/app/locations/red/normal/LeftNormalRed";
 
 //Location Orange
-import FrontNormalOrange from "./views/app/locations/green/normal/FrontNormalOrange";
-import RightNormalOrange from "./views/app/locations/green/normal/RightNormalOrange";
-import BackNormalOrange from "./views/app/locations/green/normal/BackNormalOrange";
-import LeftNormalOrange from "./views/app/locations/green/normal/LeftNormalOrange";
+import FrontNormalOrange from "./views/app/locations/orange/normal/FrontNormalOrange";
+import RightNormalOrange from "./views/app/locations/orange/normal/RightNormalOrange";
+import BackNormalOrange from "./views/app/locations/orange/normal/BackNormalOrange";
+import LeftNormalOrange from "./views/app/locations/orange/normal/LeftNormalOrange";
 
 //Location Purple
-import FrontNormalPurple from "./views/app/locations/green/normal/FrontNormalPurple";
-import RightNormalPurple from "./views/app/locations/green/normal/RightNormalPurple";
-import BackNormalPurple from "./views/app/locations/green/normal/BackNormalPurple";
-import LeftNormalPurple from "./views/app/locations/green/normal/LeftNormalPurple";
+import FrontNormalPurple from "./views/app/locations/purple/normal/FrontNormalPurple";
+import RightNormalPurple from "./views/app/locations/purple/normal/RightNormalPurple";
+import BackNormalPurple from "./views/app/locations/purple/normal/BackNormalPurple";
+import LeftNormalPurple from "./views/app/locations/purple/normal/LeftNormalPurple";
 
 // CSS and assets
 import Logo from "./assets/logo/logo.png";

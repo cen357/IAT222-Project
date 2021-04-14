@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 
-function streetView(props) {
+function StreetView(props) {
+	const [animationCount, setAnimationCount] = useState(0);
+
 	const pageVariants = {
 		in: {
 			opacity: 1,
@@ -18,7 +20,12 @@ function streetView(props) {
 	};
 
 	const handleStart = () =>
-		props.history.push("/streetView/locations/blue/normal/front");
+		props.history.push({
+			pathname: "/streetView/locations/blue/normal/front",
+			state: {
+				animationCount,
+			},
+		});
 
 	return (
 		<motion.div
@@ -37,9 +44,10 @@ function streetView(props) {
 					className="btn btn-secondary">
 					Start
 				</button>
+				<div>animationCount = {animationCount}</div>
 			</div>
 		</motion.div>
 	);
 }
 
-export default streetView;
+export default StreetView;
