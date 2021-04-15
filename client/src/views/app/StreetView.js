@@ -54,7 +54,7 @@ function StreetView(props) {
 
 	const handleStart = () =>
 		props.history.push({
-			pathname: "/streetView/locations/blue/normal/front",
+			pathname: "/streetView/locations/blue/light/front",
 			state: {
 				animationCount,
 				violentPopup1Lock,
@@ -110,10 +110,7 @@ function StreetView(props) {
 					className="btn btn-secondary">
 					Start
 				</button>
-				<div>
-					animationCount = {animationCount}
-					animationLock = {animationLock}
-				</div>
+				<div>animationCount = {animationCount}</div>
 			</div>
 		</motion.div>
 	);
