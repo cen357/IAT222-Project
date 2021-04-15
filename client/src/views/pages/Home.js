@@ -55,10 +55,13 @@ function Home(props) {
 					<div className="p-5">
 						<h1>Virtual reality walk in Chinatown</h1>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Fugit placeat est laboriosam minus saepe quis
-							rerum maiores odit? Corrupti dolores eos similique
-							quo quidem earum vitae molestiae at nihil quod!
+							"The reality of Chinatown" is an interactive web app
+							that simulates the city blocks and streets of
+							Vancouver Chinatown. Amid the waves of COVID-19,
+							many people are unaware of racism incidents against
+							Asians living in the West. What if Chinatown decided
+							to give you a virtual tour about incidents happening
+							around the world?
 						</p>
 						<div className="btn-group">
 							<button

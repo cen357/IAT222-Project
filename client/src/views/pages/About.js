@@ -45,13 +45,7 @@ function About() {
 				<div className="d-flex justify-content-between pt-5">
 					<div className="px-5 ml-5">
 						<h1>Our goal</h1>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Possimus a consectetur quae. Beatae molestiae
-							deserunt, ducimus quod mollitia officiis. At modi
-							illum quia facilis, omnis error hic perspiciatis
-							voluptatem pariatur.
-						</p>
+						<p></p>
 					</div>
 					<div className="px-5"></div>
 					<div className="px-5 mr-5">
@@ -66,13 +60,7 @@ function About() {
 
 				<div className="d-flex flex-column ml-5 px-5">
 					<h1>Our team</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Consectetur harum inventore facilis sunt autem est
-						sapiente beatae voluptatum unde et. Dolore laudantium
-						exercitationem eveniet suscipit aliquid nihil esse quia.
-						Animi.
-					</p>
+					<p></p>
 					<ImageSlider />
 				</div>
 			</div>

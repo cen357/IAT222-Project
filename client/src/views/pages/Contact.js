@@ -43,13 +43,7 @@ function Contact() {
 				<div className="d-flex flex-row ml-5 pl-5">
 					<div className="d-flex flex-column">
 						<h1 className="text-white">Ask us anything</h1>
-						<p>
-							Lorem, ipsum dolor sit amet consectetur adipisicing
-							elit. Magni temporibus suscipit adipisci. Recusandae
-							sit aliquam asperiores laboriosam consectetur, nobis
-							sequi cupiditate odit alias quis eaque ea labore
-							perferendis adipisci rem!
-						</p>
+						<p></p>
 					</div>
 					<div className="px-5 mx-5"></div>
 					<div className="px-5 mx-5"></div>
