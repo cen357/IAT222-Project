@@ -4,13 +4,21 @@ import NavigationUI from "../../../../../assets/app/navigationUI.png";
 import RightNormalBackground from "../../../../../assets/app/purple/normal/right/right_normal_background.png";
 import PurpleToGreenTransition from "../../../../../assets/app/purple/normal/right/purple_to_green_transition.mp4";
 import { motion } from "framer-motion";
+import GifPlayer from "react-gif-player";
+import Glitch from "../../../../../assets/app/glitch.gif";
+import Graffiti from "../../../../../assets/graffiti.mp4";
+import End from "../../../../../assets/graffiti endscreen.png";
 
 function RightNormalPurple(props) {
 	//******************************************************************************//
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
-	const [animationActive, setAnimationActive] = useState(0);
+	const [glitch, setGlitch] = useState(0);
+	const [popup1, setPopup1] = useState(0);
+	const [popup2, setPopup2] = useState(0);
+	const [end, setEnd] = useState(0);
+	const [graffiti, setGraffiti] = useState(0);
 	const forwardRef = useRef(null);
 
 	//******************************************************************************//
@@ -54,7 +62,17 @@ function RightNormalPurple(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [425, 233, 530, 273],
+			},
+			{
+				name: "popup1",
+				shape: "rect",
+				coords: [94, 565, 127, 650],
+			},
+			{
+				name: "popup2",
+				shape: "rect",
+				coords: [829, 556, 877, 633],
 			},
 		],
 	};
@@ -71,18 +89,27 @@ function RightNormalPurple(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
-				setAnimationActive(1);
+				setGlitch(1);
 				setTimeout(() => {
-					setAnimationActive(0);
+					setGlitch(0);
+				}, 1000);
+				setGraffiti(1);
+				setTimeout(() => {
+					setGraffiti(0);
 				}, 5000);
+				setEnd(1);
+				setTimeout(() => {
+					setEnd(0);
+				}, 5000);
+				setTimeout(() => {
+					props.history.push({
+						pathname: "/streetView/",
+					});
+				}, 12000);
+
 				break;
 			// Navigation UI
 			case "move_forward":
@@ -97,23 +124,6 @@ function RightNormalPurple(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -195,18 +205,40 @@ function RightNormalPurple(props) {
 				/>
 
 				{/* Animations */}
-				<img
+				<div
 					id="animation"
-					src={RightNormalBackground}
-					alt="animation"
+					width="1024"
+					height="768"
+					style={{
+						position: "absolute",
+						zIndex: 4,
+						opacity: glitch,
+					}}>
+					<GifPlayer gif={Glitch} still={Glitch} />
+				</div>
+
+				<video
+					id="animation"
+					width="1024"
+					height="768"
+					src={Graffiti}
+					style={{
+						position: "absolute",
+						zIndex: 3,
+						opacity: graffiti,
+					}}></video>
+
+				<div
+					id="animation"
 					width="1024"
 					height="768"
 					style={{
 						position: "absolute",
 						zIndex: 2,
-						opacity: animationActive,
-					}}
-				/>
+						opacity: 0,
+					}}>
+					<GifPlayer gif={End} still={End} />
+				</div>
 
 				{/* Qr Codes */}
 
@@ -215,7 +247,7 @@ function RightNormalPurple(props) {
 					id="mask"
 					style={{
 						position: "absolute",
-						zIndex: 4,
+						zIndex: 5,
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
@@ -225,9 +257,6 @@ function RightNormalPurple(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

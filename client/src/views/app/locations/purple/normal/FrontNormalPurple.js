@@ -3,6 +3,7 @@ import ImageMapper from "react-image-mapper";
 import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
 import FrontNormalBackground from "../../../../../assets/app/purple/normal/front/front_normal_background.png";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster13.png";
 
 function FrontNormalPurple(props) {
 	//******************************************************************************//
@@ -47,7 +48,7 @@ function FrontNormalPurple(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [736, 369, 877, 445],
 			},
 		],
 	};
@@ -64,11 +65,6 @@ function FrontNormalPurple(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -87,23 +83,6 @@ function FrontNormalPurple(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -164,7 +143,7 @@ function FrontNormalPurple(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={FrontNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -192,9 +171,6 @@ function FrontNormalPurple(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

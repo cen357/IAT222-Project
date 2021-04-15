@@ -4,6 +4,7 @@ import NavigationUI from "../../../../../assets/app/navigationUI.png";
 import FrontNormalBackground from "../../../../../assets/app/orange/normal/front/front_normal_background.png";
 import OrangeToPurpleTransition from "../../../../../assets/app/orange/normal/front/orange_to_purple_transition.mp4";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster12.png";
 
 function FrontNormalOrange(props) {
 	//******************************************************************************//
@@ -54,7 +55,7 @@ function FrontNormalOrange(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [368, 371, 443, 408],
 			},
 		],
 	};
@@ -71,11 +72,6 @@ function FrontNormalOrange(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -97,23 +93,6 @@ function FrontNormalOrange(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -198,7 +177,7 @@ function FrontNormalOrange(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={FrontNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -226,9 +205,6 @@ function FrontNormalOrange(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

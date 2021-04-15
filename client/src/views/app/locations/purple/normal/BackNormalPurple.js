@@ -4,6 +4,7 @@ import NavigationUI from "../../../../../assets/app/navigationUI.png";
 import BackNormalBackground from "../../../../../assets/app/purple/normal/back/back_normal_background.png";
 import PurpleToOrangeTransition from "../../../../../assets/app/purple/normal/back/purple_to_orange_transition.mp4";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster15.png";
 
 function BackNormalPurple(props) {
 	//******************************************************************************//
@@ -54,7 +55,7 @@ function BackNormalPurple(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [613, 534, 674, 667],
 			},
 		],
 	};
@@ -71,11 +72,6 @@ function BackNormalPurple(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -97,23 +93,6 @@ function BackNormalPurple(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -197,7 +176,7 @@ function BackNormalPurple(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={BackNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -225,9 +204,6 @@ function BackNormalPurple(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

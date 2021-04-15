@@ -1,7 +1,7 @@
 import React from "react";
 import "react-multi-carousel/lib/styles.css";
 import ImageSlider from "../../components/pages/ImageSlider";
-import Cat from "../../assets/img/cat.jpg";
+import AboutIllustration from "../../assets/img/AboutPage Illustration.png";
 import AboutBackground from "../../assets/img/about.png";
 import { motion } from "framer-motion";
 
@@ -55,7 +55,12 @@ function About() {
 					</div>
 					<div className="px-5"></div>
 					<div className="px-5 mr-5">
-						<img src={Cat} alt="cat" height="300" width="300" />
+						<img
+							src={AboutIllustration}
+							alt="cat"
+							height="300"
+							width="300"
+						/>
 					</div>
 				</div>
 

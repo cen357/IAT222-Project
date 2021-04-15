@@ -3,6 +3,7 @@ import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
 import LeftNormalBackground from "../../../../../assets/app/purple/normal/left/left_normal_background.png";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster14.png";
 
 function LeftNormalPurple(props) {
 	//******************************************************************************//
@@ -47,7 +48,7 @@ function LeftNormalPurple(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [471, 465, 510, 528],
 			},
 		],
 	};
@@ -64,11 +65,6 @@ function LeftNormalPurple(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -87,23 +83,6 @@ function LeftNormalPurple(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -165,7 +144,7 @@ function LeftNormalPurple(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={LeftNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -193,9 +172,6 @@ function LeftNormalPurple(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

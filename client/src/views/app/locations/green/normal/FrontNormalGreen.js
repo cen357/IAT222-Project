@@ -3,6 +3,7 @@ import ImageMapper from "react-image-mapper";
 import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
 import FrontNormalBackground from "../../../../../assets/app/green/normal/front/front_normal_background.png";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster1.png";
 
 function FrontNormalGreen(props) {
 	//******************************************************************************//
@@ -10,8 +11,6 @@ function FrontNormalGreen(props) {
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
 	const [animationActive, setAnimationActive] = useState(0);
-	const rightRef = useRef(null);
-	const leftRef = useRef(null);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -49,7 +48,7 @@ function FrontNormalGreen(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [801, 210, 854, 283],
 			},
 		],
 	};
@@ -66,11 +65,6 @@ function FrontNormalGreen(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -89,23 +83,6 @@ function FrontNormalGreen(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -166,7 +143,7 @@ function FrontNormalGreen(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={FrontNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -194,9 +171,6 @@ function FrontNormalGreen(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>

@@ -3,6 +3,7 @@ import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
 import BackNormalBackground from "../../../../../assets/app/red/normal/back/back_normal_background.png";
 import { motion } from "framer-motion";
+import Poster from "../../../../../assets/posters/poster5.png";
 
 function BackNormalRed(props) {
 	//******************************************************************************//
@@ -47,7 +48,7 @@ function BackNormalRed(props) {
 			{
 				name: "object",
 				shape: "rect",
-				coords: [],
+				coords: [208, 320, 297, 381],
 			},
 		],
 	};
@@ -64,11 +65,6 @@ function BackNormalRed(props) {
 	};
 
 	const handleAreaClick = (area) => {
-		alert(
-			`You clicked on ${area.name} at coords ${JSON.stringify(
-				area.coords
-			)} !`
-		);
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			case "object":
@@ -86,23 +82,6 @@ function BackNormalRed(props) {
 			default:
 				break;
 		}
-	};
-
-	const handleImageClick = (event) => {
-		const coords = {
-			x: event.nativeEvent.layerX,
-			y: event.nativeEvent.layerY,
-		};
-		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
-		console.log("clicked image");
-	};
-
-	const handleMouseEnterArea = (area) => {
-		console.log("entered area");
-	};
-
-	const handleMouseLeaveArea = (area) => {
-		console.log("leaved area");
 	};
 
 	//******************************************************************************//
@@ -163,7 +142,7 @@ function BackNormalRed(props) {
 				{/* Animations */}
 				<img
 					id="animation"
-					src={BackNormalBackground}
+					src={Poster}
 					alt="animation"
 					width="1024"
 					height="768"
@@ -191,9 +170,6 @@ function BackNormalRed(props) {
 						height={768}
 						onLoad={handleLoad}
 						onClick={handleAreaClick}
-						onMouseEnter={handleMouseEnterArea}
-						onMouseLeave={handleMouseLeaveArea}
-						onImageClick={handleImageClick}
 					/>
 				</div>
 			</div>
