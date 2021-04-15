@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI.png";
-import BackDarkBackground from "../../../../../assets/app/green/dark/back/back_dark_background.png";
+import BackDarkBackground from "../../../../../assets/app/green/dark/back/south_dark_background.png";
 import { motion } from "framer-motion";
 
 function BackDarkGreen(props) {

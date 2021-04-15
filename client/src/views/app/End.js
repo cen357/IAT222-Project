@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
-import FrontDarkBackground from "../../../../../assets/app/purple/dark/front/front_dark_background.png";
+import FrontDarkBackground from "../../assets/app/purple/dark/right/front_dark_background.png";
 import { motion } from "framer-motion";
 
-function FrontDarkPurple(props) {
+function End(props) {
 	//******************************************************************************//
 	// Hooks
 	//******************************************************************************//
@@ -153,7 +152,7 @@ function FrontDarkPurple(props) {
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUISideOnly}
+						src={FrontDarkBackground}
 						map={UI}
 						width={1024}
 						height={768}
@@ -171,4 +170,4 @@ function FrontDarkPurple(props) {
 	);
 }
 
-export default FrontDarkPurple;
+export default End;

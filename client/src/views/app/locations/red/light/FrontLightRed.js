@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI.png";
-import FrontLightBackground from "../../../../../assets/app/red/light/front/front_light_background.png";
+import FrontLightBackground from "../../../../../assets/app/red/light/front/front_light_backgorund.png";
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import Glitch from "../../../../../assets/app/glitch.gif";

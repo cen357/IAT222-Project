@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI.png";
-import RightDarkBackground from "../../../../../assets/app/purple/dark/right/right_dark_background.png";
+import RightDarkBackground from "../../../../../assets/app/purple/dark/right/front_dark_background.png";
 import { motion } from "framer-motion";
 
 function RightDarkPurple(props) {

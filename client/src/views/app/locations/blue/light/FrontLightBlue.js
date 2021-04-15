@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUIForwardOnly from "../../../../../assets/app/navigationUI_forward_only.png";
 import FrontLightBackground from "../../../../../assets/app/blue/light/front/front_light_background.png";
-import BlueToGreenTransition from "../../../../../assets/app/blue/light/front/blue_to_green_transition.mp4";
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import Glitch from "../../../../../assets/app/glitch.gif";
+import Forward from "../../../../../assets/app/blue/light/front/SHOP TO GREEN (west)_light.mp4";
 
 function FrontLightBlue(props) {
 	//******************************************************************************//
@@ -219,7 +219,7 @@ function FrontLightBlue(props) {
 		// Redirect
 		setTimeout(() => {
 			props.history.push({
-				pathname: "/streetView/locations/green/light/front",
+				pathname: "/streetView/locations/green/light/right",
 				state: {
 					animationCount,
 					violentPopup1Lock,
@@ -321,9 +321,7 @@ function FrontLightBlue(props) {
 					height="768"
 					style={{ position: "absolute", zIndex: 0 }}
 					ref={forwardRef}>
-					<source
-						src={BlueToGreenTransition}
-						type="video/mp4"></source>
+					<source src={Forward} type="video/mp4"></source>
 				</video>
 
 				{/* Background image*/}

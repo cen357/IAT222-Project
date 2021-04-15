@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUIForwardOnly from "../../../../../assets/app/navigationUI_forward_only.png";
 import FrontDarkBackground from "../../../../../assets/app/blue/dark/front/front_dark_background.png";
-import BlueToGreenTransition from "../../../../../assets/app/blue/dark/front/blue_to_green_transition.mp4";
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import Glitch from "../../../../../assets/app/glitch.gif";
@@ -315,16 +314,6 @@ function FrontDarkBlue(props) {
 			transition={pageTransition}>
 			<div className="container">
 				{/* Transition video */}
-				<video
-					id="transitionEffect"
-					width="1024"
-					height="768"
-					style={{ position: "absolute", zIndex: 0 }}
-					ref={forwardRef}>
-					<source
-						src={BlueToGreenTransition}
-						type="video/mp4"></source>
-				</video>
 
 				{/* Background image*/}
 				<img

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png.png";
+import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
 import RightLightBackground from "../../../../../assets/app/red/light/right/right_light_background.png";
 import { motion } from "framer-motion";
 

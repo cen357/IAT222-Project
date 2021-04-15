@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
-import LeftLightBackground from "../../../../../assets/app/purple/light/left/left_light_background.png";
+import LeftLightBackground from "../../../../../assets/app/purple/light/left/(south) GATE(light)-min.png";
 import { motion } from "framer-motion";
 
 function LeftLightPurple(props) {

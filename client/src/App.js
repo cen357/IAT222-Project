@@ -86,9 +86,9 @@ import FrontDarkBlue from "./views/app/locations/blue/dark/FrontDarkBlue";
 
 //Location Green
 import FrontDarkGreen from "./views/app/locations/green/dark/FrontDarkGreen";
-import RightDarkGreen from "./views/app/locations/green/dark/RightNormalGreen";
-import BackDarkGreen from "./views/app/locations/green/dark/BackNormalGreen";
-import LeftDarkGreen from "./views/app/locations/green/dark/LeftNormalGreen";
+import RightDarkGreen from "./views/app/locations/green/dark/RightDarkGreen";
+import BackDarkGreen from "./views/app/locations/green/dark/BackDarkGreen";
+import LeftDarkGreen from "./views/app/locations/green/dark/LeftDarkGreen";
 
 //Location Red
 import FrontDarkRed from "./views/app/locations/red/dark/FrontDarkRed";

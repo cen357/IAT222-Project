@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI.png";
-import BackLightBackground from "../../../../../assets/app/purple/light/back/back_light_background.png";
+import BackLightBackground from "../../../../../assets/app/purple/light/back/light south.png";
 import { motion } from "framer-motion";
 
 function BackLightPurple(props) {
