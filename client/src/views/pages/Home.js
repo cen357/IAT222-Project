@@ -1,5 +1,5 @@
 import React from "react";
-import HomeIllustration from "../../assets/img/HomePageIllustration.png";
+import HomeIllustration from "../../assets/img/Group_103.png";
 import { motion } from "framer-motion";
 import HomeBackground from "../../assets/img/home.png";
 
@@ -70,6 +70,7 @@ function Home(props) {
 								className="btn btn-secondary rounded-pill font-weight-bold py-2 px-4 text-white	bg-primary">
 								Click to Start
 							</button>
+							<img src="" alt="" />
 						</div>
 					</div>
 				</div>

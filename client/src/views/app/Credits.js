@@ -46,10 +46,7 @@ function StreetView(props) {
 					className="btn btn-secondary">
 					Restart
 				</button>
-				<div>
-					animationCount = {animationCount}
-					animationLock = {animationLock}
-				</div>
+				<div></div>
 			</div>
 		</motion.div>
 	);
