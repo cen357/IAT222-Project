@@ -263,7 +263,7 @@ function FrontDarkBlue(props) {
 	const handleGlitch = () => {
 		setBackgroundActive(0);
 		props.history.push({
-			pathname: "/streetView/locations/blue/dark/front",
+			pathname: "/End",
 			state: {
 				animationCount,
 				violentPopup1Lock,

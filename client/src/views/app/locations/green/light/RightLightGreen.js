@@ -158,7 +158,7 @@ function RightLightGreen(props) {
 				coords: [478, 733, 510, 711, 544, 734],
 			},
 			{
-				name: "move_right",
+				name: "move_left",
 				shape: "poly",
 				coords: [25, 371, 65, 344, 65, 398],
 			},
@@ -193,8 +193,8 @@ function RightLightGreen(props) {
 			case "move_forward":
 				handleForward();
 				break;
-			case "move_right":
-				handleRight();
+			case "move_left":
+				handleLeft();
 				break;
 			case "move_right":
 				handleRight();
@@ -232,7 +232,7 @@ function RightLightGreen(props) {
 		// Redirect
 		setTimeout(() => {
 			props.history.push({
-				pathname: "/streetView/locations/purple/light/right",
+				pathname: "/streetView/locations/blue/light/front",
 				state: {
 					animationCount,
 					violentPopup1Lock,

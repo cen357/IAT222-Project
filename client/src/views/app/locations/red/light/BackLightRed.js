@@ -1,17 +1,132 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
+import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
 import BackLightBackground from "../../../../../assets/app/red/light/back/back_light_background.png";
 import { motion } from "framer-motion";
-import GifPlayer from "react-gif-player";
-import ViolentPopup1 from "../../../../../assets/app/green/light/front/violent-popup-1.gif";
 
 function BackLightRed(props) {
+	//******************************************************************************//
+	// Saved states from previous routes
+	//******************************************************************************//
+	const [animationCount, setAnimationCount] = useState(
+		props.location.state.animationCount
+	);
+	const [violentPopup1Lock, setViolentPopup1Lock] = useState(
+		props.location.state.violentPopup1Lock
+	);
+	const [violentPopup2Lock, setViolentPopup2Lock] = useState(
+		props.location.state.violentPopup2Lock
+	);
+	const [poster1Lock, setPoster1Lock] = useState(
+		props.location.state.poster1
+	);
+	const [poster2Lock, setPoster2Lock] = useState(
+		props.location.state.poster2
+	);
+	const [poster3Lock, setPoster3Lock] = useState(
+		props.location.state.poster3
+	);
+	const [poster4Lock, setPoster4Lock] = useState(
+		props.location.state.poster4
+	);
+	const [poster5Lock, setPoster5Lock] = useState(
+		props.location.state.poster5
+	);
+	const [poster6Lock, setPoster6Lock] = useState(
+		props.location.state.poster6
+	);
+	const [poster7Lock, setPoster7Lock] = useState(
+		props.location.state.poster7
+	);
+	const [poster8Lock, setPoster8Lock] = useState(
+		props.location.state.poster8
+	);
+	const [poster9Lock, setPoster9Lock] = useState(
+		props.location.state.poster9
+	);
+	const [poster10Lock, setPoster10Lock] = useState(
+		props.location.state.poster10
+	);
+	const [poster11Lock, setPoster11Lock] = useState(
+		props.location.state.poster11
+	);
+	const [poster12Lock, setPoster12Lock] = useState(
+		props.location.state.poster12
+	);
+	const [poster13Lock, setPoster13Lock] = useState(
+		props.location.state.poster13
+	);
+	const [poster14Lock, setPoster14Lock] = useState(
+		props.location.state.poster14
+	);
+	const [poster15Lock, setPoster15Lock] = useState(
+		props.location.state.poster15
+	);
+	const [poster16Lock, setPoster16Lock] = useState(
+		props.location.state.poster16
+	);
+	const [poster17Lock, setPoster17Lock] = useState(
+		props.location.state.poster17
+	);
+	const [poster18Lock, setPoster18Lock] = useState(
+		props.location.state.poster18
+	);
+	const [poster19Lock, setPoster19Lock] = useState(
+		props.location.state.poster19
+	);
+	const [poster20Lock, setPoster20Lock] = useState(
+		props.location.state.poster20
+	);
+	const [poster21Lock, setPoster21Lock] = useState(
+		props.location.state.poster21
+	);
+	const [poster22Lock, setPoster22Lock] = useState(
+		props.location.state.poster22
+	);
+	const [poster23Lock, setPoster23Lock] = useState(
+		props.location.state.poster23
+	);
+	const [poster24Lock, setPoster24Lock] = useState(
+		props.location.state.poster24
+	);
+	const [poster25Lock, setPoster25Lock] = useState(
+		props.location.state.poster25
+	);
+	const [poster26Lock, setPoster26Lock] = useState(
+		props.location.state.poster26
+	);
+	const [poster27Lock, setPoster27Lock] = useState(
+		props.location.state.poster27
+	);
+	const [poster28Lock, setPoster28Lock] = useState(
+		props.location.state.poster28
+	);
+	const [poster29Lock, setPoster29Lock] = useState(
+		props.location.state.poster29
+	);
+	const [poster30Lock, setPoster30Lock] = useState(
+		props.location.state.poster30
+	);
+	const [poster31Lock, setPoster31Lock] = useState(
+		props.location.state.poster31
+	);
 	//******************************************************************************//
 	// Hooks
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
-	const [toggleAnimation, setToggleAnimation] = useState(0);
+	const [glitch, setGlitch] = useState(0);
+	const rightRef = useRef(null);
+	const leftRef = useRef(null);
+
+	useEffect(() => {
+		if (animationCount >= 10) {
+			setGlitch(1);
+			setTimeout(() => {
+				setGlitch(0);
+				handleGlitch();
+			}, 1000);
+		}
+	}, [animationCount]);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -40,17 +155,11 @@ function BackLightRed(props) {
 				name: "move_left",
 				shape: "poly",
 				coords: [25, 371, 65, 344, 65, 398],
-				lineWidth: 1,
-				preFillColor: "green",
-				strokeColor: "#6afd09",
 			},
 			{
 				name: "move_right",
 				shape: "poly",
 				coords: [957, 357, 997, 384, 957, 410],
-				lineWidth: 1,
-				preFillColor: "blue",
-				strokeColor: "#6afd09",
 			},
 		],
 	};
@@ -93,10 +202,6 @@ function BackLightRed(props) {
 		};
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
-		setToggleAnimation(1);
-		setTimeout(() => {
-			setToggleAnimation(0);
-		}, 6500);
 	};
 
 	const handleMouseEnterArea = (area) => {
@@ -111,15 +216,145 @@ function BackLightRed(props) {
 	// Routing handlers
 	//******************************************************************************//
 	const handleLeft = () => {
+		// turn background off
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/light/right");
+		// Play transition video
+		leftRef.current.play();
+		// Redirect
+		setTimeout(() => {
+			props.history.push({
+				pathname: "/streetView/locations/red/light/right",
+				state: {
+					animationCount,
+					violentPopup1Lock,
+					violentPopup2Lock,
+					poster1Lock,
+					poster2Lock,
+					poster3Lock,
+					poster4Lock,
+					poster5Lock,
+					poster6Lock,
+					poster7Lock,
+					poster8Lock,
+					poster9Lock,
+					poster10Lock,
+					poster11Lock,
+					poster12Lock,
+					poster13Lock,
+					poster14Lock,
+					poster15Lock,
+					poster16Lock,
+					poster17Lock,
+					poster18Lock,
+					poster19Lock,
+					poster20Lock,
+					poster21Lock,
+					poster22Lock,
+					poster23Lock,
+					poster24Lock,
+					poster25Lock,
+					poster26Lock,
+					poster27Lock,
+					poster28Lock,
+					poster29Lock,
+					poster30Lock,
+					poster31Lock,
+				},
+			});
+		}, 2000);
 	};
 
 	const handleRight = () => {
+		// turn background off
 		setBackgroundActive(0);
-		props.history.push("/streetView/locations/red/light/left");
+		// Play transition video
+		rightRef.current.play();
+		// Redirect
+		setTimeout(() => {
+			props.history.push({
+				pathname: "/streetView/locations/red/light/left",
+				state: {
+					animationCount,
+					violentPopup1Lock,
+					violentPopup2Lock,
+					poster1Lock,
+					poster2Lock,
+					poster3Lock,
+					poster4Lock,
+					poster5Lock,
+					poster6Lock,
+					poster7Lock,
+					poster8Lock,
+					poster9Lock,
+					poster10Lock,
+					poster11Lock,
+					poster12Lock,
+					poster13Lock,
+					poster14Lock,
+					poster15Lock,
+					poster16Lock,
+					poster17Lock,
+					poster18Lock,
+					poster19Lock,
+					poster20Lock,
+					poster21Lock,
+					poster22Lock,
+					poster23Lock,
+					poster24Lock,
+					poster25Lock,
+					poster26Lock,
+					poster27Lock,
+					poster28Lock,
+					poster29Lock,
+					poster30Lock,
+					poster31Lock,
+				},
+			});
+		}, 2000);
 	};
 
+	const handleGlitch = () => {
+		setBackgroundActive(0);
+		props.history.push({
+			pathname: "/streetView/locations/red/normal/back",
+			state: {
+				animationCount,
+				violentPopup1Lock,
+				violentPopup2Lock,
+				poster1Lock,
+				poster2Lock,
+				poster3Lock,
+				poster4Lock,
+				poster5Lock,
+				poster6Lock,
+				poster7Lock,
+				poster8Lock,
+				poster9Lock,
+				poster10Lock,
+				poster11Lock,
+				poster12Lock,
+				poster13Lock,
+				poster14Lock,
+				poster15Lock,
+				poster16Lock,
+				poster17Lock,
+				poster18Lock,
+				poster19Lock,
+				poster20Lock,
+				poster21Lock,
+				poster22Lock,
+				poster23Lock,
+				poster24Lock,
+				poster25Lock,
+				poster26Lock,
+				poster27Lock,
+				poster28Lock,
+				poster29Lock,
+				poster30Lock,
+				poster31Lock,
+			},
+		});
+	};
 	//******************************************************************************//
 	// RETURN
 	//******************************************************************************//
@@ -148,17 +383,6 @@ function BackLightRed(props) {
 				/>
 
 				{/* Animations */}
-				<div
-					id="animation"
-					width="1024"
-					height="768"
-					style={{
-						position: "absolute",
-						zIndex: 2,
-						opacity: toggleAnimation,
-					}}>
-					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
-				</div>
 
 				{/* Qr Codes */}
 
@@ -171,7 +395,7 @@ function BackLightRed(props) {
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUISideOnly}
+						src={NavigationUI}
 						map={UI}
 						width={1024}
 						height={768}
