@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import HomeBackground from "../../assets/img/home.png";
+import Tutorial from "../../assets/img/tutorial.png";
 
 function StreetView(props) {
 	const pageVariants = {
@@ -30,13 +32,32 @@ function StreetView(props) {
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
+				<img
+					src={HomeBackground}
+					alt="background"
+					style={{
+						height: "100%",
+						width: "100%",
+						size: "cover",
+						position: "fixed",
+						top: 0,
+						left: 0,
+						zIndex: -1,
+					}}
+				/>
+
 				<div className="d-flex flex-column">
-					<div>Content</div>
+					<img
+						src={Tutorial}
+						alt="tutorial"
+						height="300"
+						width="400"
+					/>
 				</div>
 				<button
 					type="button"
 					onClick={handleStart}
-					className="btn btn-secondary">
+					className="btn btn-primary">
 					Start
 				</button>
 			</div>
