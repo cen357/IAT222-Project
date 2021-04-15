@@ -1,5 +1,5 @@
 import React from "react";
-import HomeIllustration from "../../assets/img/Group_103.png";
+import HomeIllustration from "../../assets/img/HomePageIllustration.png";
 import { motion } from "framer-motion";
 import HomeBackground from "../../assets/img/home.png";
 
@@ -47,7 +47,7 @@ function Home(props) {
 						<img
 							src={HomeIllustration}
 							alt="home"
-							height="800"
+							height="300"
 							width="400"
 						/>
 					</div>

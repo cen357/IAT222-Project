@@ -2,9 +2,6 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 function StreetView(props) {
-	const [animationCount, setAnimationCount] = useState(0);
-	const [animationLock, setAnimationLock] = useState(0);
-
 	const pageVariants = {
 		in: {
 			opacity: 1,
@@ -23,10 +20,6 @@ function StreetView(props) {
 	const handleStart = () =>
 		props.history.push({
 			pathname: "/streetView/locations/blue/normal/front",
-			state: {
-				animationCount,
-				animationLock,
-			},
 		});
 
 	return (
