@@ -12,6 +12,7 @@ function RightNormalGreen(props) {
 	const [animationCount, setAnimationCount] = useState(
 		props.location.state.animationCount
 	);
+	let temp = props.location.state.animationLock;
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -128,7 +129,10 @@ function RightNormalGreen(props) {
 		setTimeout(() => {
 			props.history.push({
 				pathname: "/streetView/locations/blue/normal/front",
-				state: { animationCount },
+				state: {
+					animationCount,
+					temp,
+				},
 			});
 		}, 2000);
 	};

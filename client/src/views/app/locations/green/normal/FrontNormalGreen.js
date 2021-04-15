@@ -17,8 +17,9 @@ function FrontNormalGreen(props) {
 	);
 	const [animation, setAnimation] = useState(0);
 	const [glitch, setGlitch] = useState(0);
+	let temp = props.location.state.animationLock;
 	useEffect(() => {
-		if (animationCount >= 4) {
+		if (animationCount >= 10) {
 			setGlitch(1);
 			setTimeout(() => {
 				setGlitch(0);
@@ -148,7 +149,10 @@ function FrontNormalGreen(props) {
 		setBackgroundActive(0);
 		props.history.push({
 			pathname: "/streetView/locations/green/normal/right",
-			state: { animationCount },
+			state: {
+				animationCount,
+				temp,
+			},
 		});
 	};
 

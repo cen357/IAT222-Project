@@ -17,12 +17,13 @@ function FrontNormalBlue(props) {
 	const [animationCount, setAnimationCount] = useState(
 		props.location.state.animationCount
 	);
+	const [animationLock, setAnimationLock] = useState(false);
 	const [glitch, setGlitch] = useState(0);
 	const transitionEffectRef = useRef(null);
 	const [play, { stop }] = useSound(CatSound);
 
 	useEffect(() => {
-		if (animationCount >= 3) {
+		if (animationCount >= 10) {
 			setGlitch(1);
 			setTimeout(() => {
 				setGlitch(0);
@@ -78,6 +79,7 @@ function FrontNormalBlue(props) {
 	// Event handlers
 	//******************************************************************************//
 	const handleLoad = () => {
+		setAnimationLock(props.location.state.animationLock);
 		setTimeout(() => {
 			setBackgroundActive(1);
 		}, 500);
@@ -96,8 +98,12 @@ function FrontNormalBlue(props) {
 			case "move_forward":
 				handleForward();
 				break;
+			// Animation
 			case "object":
-				setAnimationCount(animationCount + 1);
+				if (animationLock === false) {
+					setAnimationCount(animationCount + 1);
+					setAnimationLock(true);
+				}
 				break;
 			default:
 				break;
@@ -137,6 +143,7 @@ function FrontNormalBlue(props) {
 				pathname: "/streetView/locations/green/normal/front",
 				state: {
 					animationCount,
+					animationLock,
 				},
 			});
 		}, 2000);
