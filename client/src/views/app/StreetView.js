@@ -46,12 +46,23 @@ function StreetView(props) {
 					}}
 				/>
 
-				<button
-					type="button"
-					onClick={handleStart}
-					className="btn btn-primary">
-					Start
-				</button>
+				<div>
+					<img
+						src={Tutorial}
+						height="600"
+						width="1200"
+						alt="tutorial"
+					/>
+				</div>
+
+				<div className="text-center">
+					<button
+						type="button"
+						onClick={handleStart}
+						className="btn btn-primary">
+						Start
+					</button>
+				</div>
 			</div>
 		</motion.div>
 	);
