@@ -46,19 +46,10 @@ function StreetView(props) {
 					}}
 				/>
 
-				<div className="d-flex flex-column">
-					<img
-						src={Tutorial}
-						alt="tutorial"
-						height="1024"
-						width="768"
-						style={{ position: "absolute" }}
-					/>
-				</div>
 				<button
 					type="button"
 					onClick={handleStart}
-					className="ml-5 mt-5 btn btn-primary">
+					className="btn btn-primary">
 					Start
 				</button>
 			</div>
