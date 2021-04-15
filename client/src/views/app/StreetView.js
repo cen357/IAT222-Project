@@ -50,14 +50,15 @@ function StreetView(props) {
 					<img
 						src={Tutorial}
 						alt="tutorial"
-						height="300"
-						width="400"
+						height="1024"
+						width="768"
+						style={{ position: "absolute" }}
 					/>
 				</div>
 				<button
 					type="button"
 					onClick={handleStart}
-					className="btn btn-primary">
+					className="ml-5 mt-5 btn btn-primary">
 					Start
 				</button>
 			</div>
