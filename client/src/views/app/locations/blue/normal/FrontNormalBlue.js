@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import useSound from "use-sound";
 import NavigationUIForwardOnly from "../../../../../assets/app/navigationUI_forward_only.png";
 import FrontNormalBackground from "../../../../../assets/app/blue/normal/front/front_normal_background.png";
 import BlueToGreenTransition from "../../../../../assets/app/blue/normal/front/blue_to_green_transition.mp4";
-import CatSound from "../../../../../assets/app/blue/normal/front/cat.mp3";
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import Glitch from "../../../../../assets/app/glitch.gif";
@@ -22,7 +20,6 @@ function FrontNormalBlue(props) {
 	);
 	const [glitch, setGlitch] = useState(0);
 	const transitionEffectRef = useRef(null);
-	const [play, { stop }] = useSound(CatSound);
 
 	useEffect(() => {
 		if (animationCount >= 1) {
@@ -122,12 +119,10 @@ function FrontNormalBlue(props) {
 
 	const handleMouseEnterArea = (area) => {
 		console.log("entered area");
-		play();
 	};
 
 	const handleMouseLeaveArea = (area) => {
 		console.log("leaved area");
-		stop();
 	};
 
 	//******************************************************************************//
@@ -153,7 +148,7 @@ function FrontNormalBlue(props) {
 	const handleGlitch = () => {
 		setBackgroundActive(0);
 		props.history.push({
-			pathname: "/streetView/locations/green/normal/front",
+			pathname: "/streetView/locations/blue/dark/front",
 			state: { animationCount, animationLock },
 		});
 	};
