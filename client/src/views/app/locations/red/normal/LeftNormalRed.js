@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
 import NavigationUI from "../../../../../assets/app/navigationUI.png";
 import LeftNormalBackground from "../../../../../assets/app/red/normal/left/left_normal_background.png";
-import RedToPurpleTransition from "../../../../../assets/app/red/normal/left/red_to_purple_transition.mp4";
+import RedToOrangeTransition from "../../../../../assets/app/red/normal/left/left_to_back_transition.mp4";
 import { motion } from "framer-motion";
 
 function LeftNormalRed(props) {
@@ -127,7 +127,7 @@ function LeftNormalRed(props) {
 		// Redirect
 		setTimeout(() => {
 			props.history.push({
-				pathname: "/streetView/locations/purple/normal/left",
+				pathname: "/streetView/locations/orange/normal/left",
 			});
 		}, 2000);
 	};
@@ -176,7 +176,7 @@ function LeftNormalRed(props) {
 					style={{ position: "absolute", zIndex: 0 }}
 					ref={forwardRef}>
 					<source
-						src={RedToPurpleTransition}
+						src={RedToOrangeTransition}
 						type="video/mp4"></source>
 				</video>
 

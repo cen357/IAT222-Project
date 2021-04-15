@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUI from "../../../../../assets/app/navigationUI.png";
+import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
 import LeftNormalBackground from "../../../../../assets/app/orange/normal/left/left_normal_background.png";
-import OrangeToPurpleTransition from "../../../../../assets/app/orange/normal/left/orange_to_purple_transition.mp4";
 import { motion } from "framer-motion";
 
 function LeftNormalOrange(props) {
@@ -11,7 +10,6 @@ function LeftNormalOrange(props) {
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
 	const [animationActive, setAnimationActive] = useState(0);
-	const forwardRef = useRef(null);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -36,11 +34,6 @@ function LeftNormalOrange(props) {
 	const UI = {
 		name: "ui",
 		areas: [
-			{
-				name: "move_forward",
-				shape: "poly",
-				coords: [478, 733, 510, 711, 544, 734],
-			},
 			{
 				name: "move_left",
 				shape: "poly",
@@ -85,9 +78,6 @@ function LeftNormalOrange(props) {
 				}, 5000);
 				break;
 			// Navigation UI
-			case "move_forward":
-				handleForward();
-				break;
 			case "move_left":
 				handleLeft();
 				break;
@@ -119,18 +109,6 @@ function LeftNormalOrange(props) {
 	//******************************************************************************//
 	// Routing handlers
 	//******************************************************************************//
-	const handleForward = () => {
-		// turn background off
-		setBackgroundActive(0);
-		// Play transition video
-		forwardRef.current.play();
-		// Redirect
-		setTimeout(() => {
-			props.history.push({
-				pathname: "/streetView/locations/purple/normal/left",
-			});
-		}, 2000);
-	};
 
 	const handleLeft = () => {
 		// turn background off
@@ -169,16 +147,6 @@ function LeftNormalOrange(props) {
 			transition={pageTransition}>
 			<div className="container">
 				{/* Transition video */}
-				<video
-					id="transitionEffect"
-					width="1024"
-					height="768"
-					style={{ position: "absolute", zIndex: 0 }}
-					ref={forwardRef}>
-					<source
-						src={OrangeToPurpleTransition}
-						type="video/mp4"></source>
-				</video>
 
 				{/* Background image*/}
 				<img
@@ -219,7 +187,7 @@ function LeftNormalOrange(props) {
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUI}
+						src={NavigationUISideOnly}
 						map={UI}
 						width={1024}
 						height={768}

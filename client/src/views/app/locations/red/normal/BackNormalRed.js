@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import NavigationUI from "../../../../../assets/app/navigationUI.png";
+import NavigationUI from "../../../../../assets/app/navigationUI_side_only.png";
 import BackNormalBackground from "../../../../../assets/app/red/normal/back/back_normal_background.png";
-import RedToRedTransition from "../../../../../assets/app/red/normal/back/red_to_red_transition.mp4";
 import { motion } from "framer-motion";
 
 function BackNormalRed(props) {
@@ -11,7 +10,6 @@ function BackNormalRed(props) {
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
 	const [animationActive, setAnimationActive] = useState(0);
-	const forwardRef = useRef(null);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -36,11 +34,6 @@ function BackNormalRed(props) {
 	const UI = {
 		name: "ui",
 		areas: [
-			{
-				name: "move_forward",
-				shape: "poly",
-				coords: [478, 733, 510, 711, 544, 734],
-			},
 			{
 				name: "move_left",
 				shape: "poly",
@@ -84,10 +77,6 @@ function BackNormalRed(props) {
 					setAnimationActive(0);
 				}, 5000);
 				break;
-			// Navigation UI
-			case "move_forward":
-				handleForward();
-				break;
 			case "move_left":
 				handleLeft();
 				break;
@@ -119,19 +108,6 @@ function BackNormalRed(props) {
 	//******************************************************************************//
 	// Routing handlers
 	//******************************************************************************//
-	const handleForward = () => {
-		// turn background off
-		setBackgroundActive(0);
-		// Play transition video
-		forwardRef.current.play();
-		// Redirect
-		setTimeout(() => {
-			props.history.push({
-				pathname: "/streetView/locations/red/normal/back",
-			});
-		}, 2000);
-	};
-
 	const handleLeft = () => {
 		// turn background off
 		setBackgroundActive(0);
@@ -169,14 +145,6 @@ function BackNormalRed(props) {
 			transition={pageTransition}>
 			<div className="container">
 				{/* Transition video */}
-				<video
-					id="transitionEffect"
-					width="1024"
-					height="768"
-					style={{ position: "absolute", zIndex: 0 }}
-					ref={forwardRef}>
-					<source src={RedToRedTransition} type="video/mp4"></source>
-				</video>
 
 				{/* Background image*/}
 				<img

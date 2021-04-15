@@ -10,8 +10,6 @@ function FrontNormalPurple(props) {
 	//******************************************************************************//
 	const [backgroundActive, setBackgroundActive] = useState(0);
 	const [animationActive, setAnimationActive] = useState(0);
-	const rightRef = useRef(null);
-	const leftRef = useRef(null);
 
 	//******************************************************************************//
 	// Page animation configuration
