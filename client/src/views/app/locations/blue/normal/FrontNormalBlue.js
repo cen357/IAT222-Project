@@ -263,7 +263,7 @@ function FrontNormalBlue(props) {
 	const handleGlitch = () => {
 		setBackgroundActive(0);
 		props.history.push({
-			pathname: "/streetView/locations/blue/normal/front",
+			pathname: "/streetView/locations/blue/dark/front",
 			state: {
 				animationCount,
 				violentPopup1Lock,
