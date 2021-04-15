@@ -13,6 +13,8 @@ import Home from "./views/pages/Home";
 import About from "./views/pages/About";
 import Contact from "./views/pages/Contact";
 import StreetView from "./views/app/StreetView";
+import End from "./views/app/End";
+import Credits from "./views/app/Credits";
 
 //******************************************************************************//
 //  Normal Mode
@@ -204,6 +206,8 @@ function Main() {
 				<Route exact path="/about" component={About} />
 				<Route exact path="/contact" component={Contact} />
 				<Route exact path="/streetView" component={StreetView} />
+				<Route exact path="/end" component={End} />
+				<Route exact path="/credits" component={Credits} />
 
 				{/********************************************* */}
 				{/******************NORMAL MODE**************** */}

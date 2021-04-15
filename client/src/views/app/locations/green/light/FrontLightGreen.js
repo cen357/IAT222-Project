@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import ImageMapper from "react-image-mapper";
-import useSound from "use-sound";
-import NavigationUIForwardOnly from "../../../../../assets/app/navigationUI_forward_only.png";
-import FrontDarkBackground from "../../../../../assets/app/blue/dark/front/front_dark_background.png";
-import BlueToGreenTransition from "../../../../../assets/app/blue/dark/front/blue_to_green_transition.mp4";
-import CatSound from "../../../../../assets/app/blue/dark/front/cat.mp3";
+import NavigationUISideOnly from "../../../../../assets/app/navigationUI_side_only.png";
+import FrontLightBackground from "../../../../../assets/app/green/light/front/front_light_background.png";
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
+import ViolentPopup1 from "../../../../../assets/app/green/light/front/violent-popup-1.gif";
 import Glitch from "../../../../../assets/app/glitch.gif";
 
-function FrontDarkBlue(props) {
+function FrontLightGreen(props) {
 	//******************************************************************************//
 	// Hooks
 	//******************************************************************************//
@@ -20,17 +18,12 @@ function FrontDarkBlue(props) {
 	const [animationLock, setAnimationLock] = useState(
 		props.location.state.animationLock
 	);
+	const [animation, setAnimation] = useState(0);
 	const [glitch, setGlitch] = useState(0);
-	const transitionEffectRef = useRef(null);
-	const [play, { stop }] = useSound(CatSound);
 
 	useEffect(() => {
-		if (animationCount >= 1) {
-			setGlitch(1);
-			setTimeout(() => {
-				setGlitch(0);
-				handleGlitch();
-			}, 1000);
+		if (animationCount >= 2) {
+			alert("yeah");
 		}
 	}, [animationCount]);
 
@@ -45,7 +38,6 @@ function FrontDarkBlue(props) {
 			opacity: 0,
 		},
 	};
-
 	const pageTransition = {
 		type: "tween",
 		ease: "linear",
@@ -59,19 +51,27 @@ function FrontDarkBlue(props) {
 		name: "ui",
 		areas: [
 			{
-				name: "move_forward",
+				name: "move_left",
 				shape: "poly",
-				coords: [478, 733, 510, 711, 544, 734],
+				coords: [25, 371, 65, 344, 65, 398],
 				lineWidth: 1,
-				preFillColor: "red",
+				preFillColor: "green",
+				strokeColor: "#6afd09",
+			},
+			{
+				name: "move_right",
+				shape: "poly",
+				coords: [957, 357, 997, 384, 957, 410],
+				lineWidth: 1,
+				preFillColor: "blue",
 				strokeColor: "#6afd09",
 			},
 			{
 				name: "object",
 				shape: "rect",
-				coords: [427, 298, 475, 336],
+				coords: [345, 409, 474, 493],
 				lineWidth: 1,
-				preFillColor: "red",
+				preFillColor: "blue",
 				strokeColor: "#6afd09",
 			},
 		],
@@ -84,6 +84,7 @@ function FrontDarkBlue(props) {
 		setTimeout(() => {
 			setBackgroundActive(1);
 		}, 500);
+
 		console.log("loaded");
 	};
 
@@ -96,15 +97,22 @@ function FrontDarkBlue(props) {
 		console.log("clicked area" + area.name);
 		switch (area.name) {
 			// Navigation UI
-			case "move_forward":
-				handleForward();
+			case "move_left":
+				handleLeft();
 				break;
-			// Animation
+			case "move_right":
+				handleRight();
+				break;
 			case "object":
-				if (animationLock === 0) {
+				if (animationLock === 1) {
 					setAnimationCount(animationCount + 1);
 					setAnimationLock(1);
 				}
+				setAnimation(1);
+				setTimeout(() => {
+					setAnimation(0);
+				}, 6500);
+
 				break;
 			default:
 				break;
@@ -122,69 +130,48 @@ function FrontDarkBlue(props) {
 
 	const handleMouseEnterArea = (area) => {
 		console.log("entered area");
-		play();
 	};
 
 	const handleMouseLeaveArea = (area) => {
 		console.log("leaved area");
-		stop();
 	};
 
 	//******************************************************************************//
 	// Routing handlers
 	//******************************************************************************//
-	const handleForward = () => {
-		// turn background off
+	const handleLeft = () => {
 		setBackgroundActive(0);
-		// Play transition video
-		transitionEffectRef.current.play();
-		// Redirect
-		setTimeout(() => {
-			props.history.push({
-				pathname: "/streetView/locations/green/dark/front",
-				state: {
-					animationCount,
-					animationLock,
-				},
-			});
-		}, 2000);
+		props.history.push("/streetView/locations/green/light/left");
 	};
 
-	const handleGlitch = () => {
+	const handleRight = () => {
 		setBackgroundActive(0);
 		props.history.push({
-			pathname: "/streetView/locations/green/dark/front",
-			state: { animationCount, animationLock },
+			pathname: "/streetView/locations/green/light/right",
+			state: {
+				animationCount,
+				animationLock,
+			},
 		});
 	};
+
 	//******************************************************************************//
 	// RETURN
 	//******************************************************************************//
-
 	return (
 		<motion.div
-			initial="out"
+			initial="in"
 			animate="in"
 			exit="out"
 			variants={pageVariants}
 			transition={pageTransition}>
 			<div className="container">
 				{/* Transition video */}
-				<video
-					id="transitionEffect"
-					width="1024"
-					height="768"
-					style={{ position: "absolute", zIndex: 0 }}
-					ref={transitionEffectRef}>
-					<source
-						src={BlueToGreenTransition}
-						type="video/mp4"></source>
-				</video>
 
 				{/* Background image*/}
 				<img
 					id="background"
-					src={FrontDarkBackground}
+					src={FrontLightBackground}
 					alt="background"
 					width="1024"
 					height="768"
@@ -203,23 +190,35 @@ function FrontDarkBlue(props) {
 					style={{
 						position: "absolute",
 						zIndex: 2,
+						opacity: animation,
+					}}>
+					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
+				</div>
+
+				<div
+					id="animation"
+					width="1024"
+					height="768"
+					style={{
+						position: "absolute",
+						zIndex: 3,
 						opacity: glitch,
 					}}>
 					<GifPlayer gif={Glitch} still={Glitch} />
 				</div>
 
-				{/* QR codes */}
+				{/* Qr Codes */}
 
 				{/* User Interface */}
 				<div
-					id="UI-mask"
+					id="mask"
 					style={{
 						position: "absolute",
-						zIndex: 3,
+						zIndex: 4,
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
-						src={NavigationUIForwardOnly}
+						src={NavigationUISideOnly}
 						map={UI}
 						width={1024}
 						height={768}
@@ -241,4 +240,4 @@ function FrontDarkBlue(props) {
 	);
 }
 
-export default FrontDarkBlue;
+export default FrontLightGreen;
