@@ -20,7 +20,6 @@ function FrontNormalBlue(props) {
 	const [animationLock, setAnimationLock] = useState(
 		props.location.state.animationLock
 	);
-	const [endLock, setEndLock] = useState(props.location.state.endLock);
 	const [glitch, setGlitch] = useState(0);
 	const transitionEffectRef = useRef(null);
 	const [play, { stop }] = useSound(CatSound);
@@ -146,7 +145,6 @@ function FrontNormalBlue(props) {
 				state: {
 					animationCount,
 					animationLock,
-					endLock,
 				},
 			});
 		}, 2000);
@@ -156,7 +154,7 @@ function FrontNormalBlue(props) {
 		setBackgroundActive(0);
 		props.history.push({
 			pathname: "/streetView/locations/green/normal/front",
-			state: { animationCount, animationLock, endLock },
+			state: { animationCount, animationLock },
 		});
 	};
 	//******************************************************************************//
@@ -238,7 +236,6 @@ function FrontNormalBlue(props) {
 			<div style={{ paddingTop: "800px" }}>
 				animationCount = {animationCount}
 				animationLock = {animationLock}
-				endLock = {endLock}
 			</div>
 		</motion.div>
 	);

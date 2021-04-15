@@ -18,13 +18,11 @@ function FrontNormalGreen(props) {
 	const [animationLock, setAnimationLock] = useState(
 		props.location.state.animationLock
 	);
-	const [endLock, setEndLock] = useState(props.location.state.endLock);
 	const [animation, setAnimation] = useState(0);
 	const [glitch, setGlitch] = useState(0);
 
 	useEffect(() => {
 		if (animationCount >= 2) {
-			setEndLock(1);
 			alert("yeah");
 		}
 	}, [animationCount]);
@@ -106,16 +104,15 @@ function FrontNormalGreen(props) {
 				handleRight();
 				break;
 			case "object":
-				if (endLock === 0) {
-					if (animationLock === 1) {
-						setAnimationCount(animationCount + 1);
-						setAnimationLock(1);
-					}
-					setAnimation(1);
-					setTimeout(() => {
-						setAnimation(0);
-					}, 6500);
+				if (animationLock === 1) {
+					setAnimationCount(animationCount + 1);
+					setAnimationLock(1);
 				}
+				setAnimation(1);
+				setTimeout(() => {
+					setAnimation(0);
+				}, 6500);
+
 				break;
 			default:
 				break;
@@ -154,7 +151,6 @@ function FrontNormalGreen(props) {
 			state: {
 				animationCount,
 				animationLock,
-				endLock,
 			},
 		});
 	};
@@ -239,7 +235,6 @@ function FrontNormalGreen(props) {
 			<div style={{ paddingTop: "800px" }}>
 				animationCount = {animationCount}
 				animationLock = {animationLock}
-				endLock = {endLock}
 			</div>
 		</motion.div>
 	);

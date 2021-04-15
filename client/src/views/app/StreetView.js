@@ -4,7 +4,6 @@ import React, { useState } from "react";
 function StreetView(props) {
 	const [animationCount, setAnimationCount] = useState(0);
 	const [animationLock, setAnimationLock] = useState(0);
-	const [endLock, setEndLock] = useState(0);
 
 	const pageVariants = {
 		in: {
@@ -27,7 +26,6 @@ function StreetView(props) {
 			state: {
 				animationCount,
 				animationLock,
-				endLock,
 			},
 		});
 
@@ -49,7 +47,7 @@ function StreetView(props) {
 					Start
 				</button>
 				<div>
-					animationCount = {animationCount} endLock = {endLock}
+					animationCount = {animationCount}
 					animationLock = {animationLock}
 				</div>
 			</div>
