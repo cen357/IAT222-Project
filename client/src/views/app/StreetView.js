@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 function StreetView(props) {
 	const [animationCount, setAnimationCount] = useState(0);
+	const [animationLock, setAnimationLock] = useState(0);
+	const [endLock, setEndLock] = useState(0);
 
 	const pageVariants = {
 		in: {
@@ -24,6 +26,8 @@ function StreetView(props) {
 			pathname: "/streetView/locations/blue/normal/front",
 			state: {
 				animationCount,
+				animationLock,
+				endLock,
 			},
 		});
 
@@ -44,7 +48,10 @@ function StreetView(props) {
 					className="btn btn-secondary">
 					Start
 				</button>
-				<div>animationCount = {animationCount}</div>
+				<div>
+					animationCount = {animationCount} endLock = {endLock}
+					animationLock = {animationLock}
+				</div>
 			</div>
 		</motion.div>
 	);

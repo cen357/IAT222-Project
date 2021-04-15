@@ -15,19 +15,17 @@ function FrontNormalGreen(props) {
 	const [animationCount, setAnimationCount] = useState(
 		props.location.state.animationCount
 	);
+	const [animationLock, setAnimationLock] = useState(
+		props.location.state.animationLock
+	);
+	const [endLock, setEndLock] = useState(props.location.state.endLock);
 	const [animation, setAnimation] = useState(0);
 	const [glitch, setGlitch] = useState(0);
-	let temp = props.location.state.animationLock;
+
 	useEffect(() => {
-		if (animationCount >= 10) {
-			setGlitch(1);
-			setTimeout(() => {
-				setGlitch(0);
-			}, 1000);
-			props.history.push({
-				pathname: "/streetView/",
-				state: { animationCount },
-			});
+		if (animationCount >= 2) {
+			setEndLock(1);
+			alert("yeah");
 		}
 	}, [animationCount]);
 
@@ -108,7 +106,16 @@ function FrontNormalGreen(props) {
 				handleRight();
 				break;
 			case "object":
-				setAnimationCount(animationCount + 1);
+				if (endLock === 0) {
+					if (animationLock === 1) {
+						setAnimationCount(animationCount + 1);
+						setAnimationLock(1);
+					}
+					setAnimation(1);
+					setTimeout(() => {
+						setAnimation(0);
+					}, 6500);
+				}
 				break;
 			default:
 				break;
@@ -122,11 +129,6 @@ function FrontNormalGreen(props) {
 		};
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
-
-		setAnimation(1);
-		setTimeout(() => {
-			setAnimation(0);
-		}, 6500);
 	};
 
 	const handleMouseEnterArea = (area) => {
@@ -151,7 +153,8 @@ function FrontNormalGreen(props) {
 			pathname: "/streetView/locations/green/normal/right",
 			state: {
 				animationCount,
-				temp,
+				animationLock,
+				endLock,
 			},
 		});
 	};
@@ -235,6 +238,8 @@ function FrontNormalGreen(props) {
 			</div>
 			<div style={{ paddingTop: "800px" }}>
 				animationCount = {animationCount}
+				animationLock = {animationLock}
+				endLock = {endLock}
 			</div>
 		</motion.div>
 	);
