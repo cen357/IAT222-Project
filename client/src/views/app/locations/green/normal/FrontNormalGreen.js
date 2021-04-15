@@ -5,6 +5,7 @@ import FrontNormalBackground from "../../../../../assets/app/green/normal/front/
 import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import ViolentPopup1 from "../../../../../assets/app/green/normal/front/violent-popup-1.gif";
+import Glitch from "../../../../../assets/app/glitch.gif";
 
 function FrontNormalGreen(props) {
 	//******************************************************************************//
@@ -14,7 +15,20 @@ function FrontNormalGreen(props) {
 	const [animationCount, setAnimationCount] = useState(
 		props.location.state.animationCount
 	);
-	const [toggleAnimation, setToggleAnimation] = useState(0);
+	const [animation, setAnimation] = useState(0);
+	const [glitch, setGlitch] = useState(0);
+	useEffect(() => {
+		if (animationCount >= 4) {
+			setGlitch(1);
+			setTimeout(() => {
+				setGlitch(0);
+			}, 1000);
+			props.history.push({
+				pathname: "/streetView/",
+				state: { animationCount },
+			});
+		}
+	}, [animationCount]);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -55,6 +69,14 @@ function FrontNormalGreen(props) {
 				preFillColor: "blue",
 				strokeColor: "#6afd09",
 			},
+			{
+				name: "object",
+				shape: "rect",
+				coords: [345, 409, 474, 493],
+				lineWidth: 1,
+				preFillColor: "blue",
+				strokeColor: "#6afd09",
+			},
 		],
 	};
 
@@ -84,6 +106,9 @@ function FrontNormalGreen(props) {
 			case "move_right":
 				handleRight();
 				break;
+			case "object":
+				setAnimationCount(animationCount + 1);
+				break;
 			default:
 				break;
 		}
@@ -97,11 +122,9 @@ function FrontNormalGreen(props) {
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
 
-		setAnimationCount(animationCount + 1);
-
-		setToggleAnimation(1);
+		setAnimation(1);
 		setTimeout(() => {
-			setToggleAnimation(0);
+			setAnimation(0);
 		}, 6500);
 	};
 
@@ -164,9 +187,21 @@ function FrontNormalGreen(props) {
 					style={{
 						position: "absolute",
 						zIndex: 2,
-						opacity: toggleAnimation,
+						opacity: animation,
 					}}>
 					<GifPlayer gif={ViolentPopup1} still={ViolentPopup1} />
+				</div>
+
+				<div
+					id="animation"
+					width="1024"
+					height="768"
+					style={{
+						position: "absolute",
+						zIndex: 3,
+						opacity: glitch,
+					}}>
+					<GifPlayer gif={Glitch} still={Glitch} />
 				</div>
 
 				{/* Qr Codes */}
@@ -176,7 +211,7 @@ function FrontNormalGreen(props) {
 					id="mask"
 					style={{
 						position: "absolute",
-						zIndex: 3,
+						zIndex: 4,
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper

@@ -6,6 +6,8 @@ import FrontNormalBackground from "../../../../../assets/app/blue/normal/front/f
 import BlueToGreenTransition from "../../../../../assets/app/blue/normal/front/blue_to_green_transition.mp4";
 import CatSound from "../../../../../assets/app/blue/normal/front/cat.mp3";
 import { motion } from "framer-motion";
+import GifPlayer from "react-gif-player";
+import Glitch from "../../../../../assets/app/glitch.gif";
 
 function FrontNormalBlue(props) {
 	//******************************************************************************//
@@ -15,12 +17,17 @@ function FrontNormalBlue(props) {
 	const [animationCount, setAnimationCount] = useState(
 		props.location.state.animationCount
 	);
+	const [glitch, setGlitch] = useState(0);
 	const transitionEffectRef = useRef(null);
 	const [play, { stop }] = useSound(CatSound);
 
 	useEffect(() => {
 		if (animationCount >= 3) {
-			alert("yeah");
+			setGlitch(1);
+			setTimeout(() => {
+				setGlitch(0);
+				handleGlitch();
+			}, 1000);
 		}
 	}, [animationCount]);
 
@@ -45,13 +52,21 @@ function FrontNormalBlue(props) {
 	//******************************************************************************//
 	// Image map area configuration
 	//******************************************************************************//
-	const SHOP_FRONT = {
-		name: "shop_front",
+	const UI = {
+		name: "ui",
 		areas: [
 			{
 				name: "move_forward",
 				shape: "poly",
 				coords: [478, 733, 510, 711, 544, 734],
+				lineWidth: 1,
+				preFillColor: "red",
+				strokeColor: "#6afd09",
+			},
+			{
+				name: "object",
+				shape: "rect",
+				coords: [427, 298, 475, 336],
 				lineWidth: 1,
 				preFillColor: "red",
 				strokeColor: "#6afd09",
@@ -81,6 +96,9 @@ function FrontNormalBlue(props) {
 			case "move_forward":
 				handleForward();
 				break;
+			case "object":
+				setAnimationCount(animationCount + 1);
+				break;
 			default:
 				break;
 		}
@@ -91,7 +109,6 @@ function FrontNormalBlue(props) {
 			x: event.nativeEvent.layerX,
 			y: event.nativeEvent.layerY,
 		};
-		setAnimationCount(animationCount + 1);
 		alert(`You clicked on the image at coords ${JSON.stringify(coords)} !`);
 		console.log("clicked image");
 	};
@@ -125,6 +142,13 @@ function FrontNormalBlue(props) {
 		}, 2000);
 	};
 
+	const handleGlitch = () => {
+		setBackgroundActive(0);
+		props.history.push({
+			pathname: "/streetView/locations/green/normal/front",
+			state: { animationCount },
+		});
+	};
 	//******************************************************************************//
 	// RETURN
 	//******************************************************************************//
@@ -164,6 +188,17 @@ function FrontNormalBlue(props) {
 				/>
 
 				{/* Animations */}
+				<div
+					id="animation"
+					width="1024"
+					height="768"
+					style={{
+						position: "absolute",
+						zIndex: 2,
+						opacity: glitch,
+					}}>
+					<GifPlayer gif={Glitch} still={Glitch} />
+				</div>
 
 				{/* QR codes */}
 
@@ -172,12 +207,12 @@ function FrontNormalBlue(props) {
 					id="UI-mask"
 					style={{
 						position: "absolute",
-						zIndex: 2,
+						zIndex: 3,
 						opacity: backgroundActive,
 					}}>
 					<ImageMapper
 						src={NavigationUIForwardOnly}
-						map={SHOP_FRONT}
+						map={UI}
 						width={1024}
 						height={768}
 						onLoad={handleLoad}
