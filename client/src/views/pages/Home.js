@@ -47,7 +47,7 @@ function Home(props) {
 						<img
 							src={HomeIllustration}
 							alt="home"
-							height="300"
+							height="800"
 							width="400"
 						/>
 					</div>
