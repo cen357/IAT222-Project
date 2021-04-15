@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import GifPlayer from "react-gif-player";
 import Glitch from "../../../../../assets/app/glitch.gif";
 import Graffiti from "../../../../../assets/graffiti.mp4";
-import End from "../../../../../assets/graffiti endscreen.png";
 
 function RightNormalPurple(props) {
 	//******************************************************************************//
@@ -17,9 +16,9 @@ function RightNormalPurple(props) {
 	const [glitch, setGlitch] = useState(0);
 	const [popup1, setPopup1] = useState(0);
 	const [popup2, setPopup2] = useState(0);
-	const [end, setEnd] = useState(0);
 	const [graffiti, setGraffiti] = useState(0);
 	const forwardRef = useRef(null);
+	const graffitiRef = useRef(null);
 
 	//******************************************************************************//
 	// Page animation configuration
@@ -64,16 +63,6 @@ function RightNormalPurple(props) {
 				shape: "rect",
 				coords: [425, 233, 530, 273],
 			},
-			{
-				name: "popup1",
-				shape: "rect",
-				coords: [94, 565, 127, 650],
-			},
-			{
-				name: "popup2",
-				shape: "rect",
-				coords: [829, 556, 877, 633],
-			},
 		],
 	};
 
@@ -96,14 +85,7 @@ function RightNormalPurple(props) {
 				setTimeout(() => {
 					setGlitch(0);
 				}, 1000);
-				setGraffiti(1);
-				setTimeout(() => {
-					setGraffiti(0);
-				}, 5000);
-				setEnd(1);
-				setTimeout(() => {
-					setEnd(0);
-				}, 5000);
+				graffitiRef.current.play();
 				setTimeout(() => {
 					props.history.push({
 						pathname: "/streetView/",
@@ -218,27 +200,13 @@ function RightNormalPurple(props) {
 				</div>
 
 				<video
-					id="animation"
+					id="graffiti"
 					width="1024"
 					height="768"
-					src={Graffiti}
-					style={{
-						position: "absolute",
-						zIndex: 3,
-						opacity: graffiti,
-					}}></video>
-
-				<div
-					id="animation"
-					width="1024"
-					height="768"
-					style={{
-						position: "absolute",
-						zIndex: 2,
-						opacity: 0,
-					}}>
-					<GifPlayer gif={End} still={End} />
-				</div>
+					style={{ position: "absolute", zIndex: 3 }}
+					ref={graffitiRef}>
+					<source src={Graffiti} type="video/mp4"></source>
+				</video>
 
 				{/* Qr Codes */}
 
